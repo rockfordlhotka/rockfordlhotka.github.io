@@ -14,4 +14,4 @@ plugins:
   - jekyll-sitemap
 github:
   is_project_page: false
-google_analytics: lhotka.net
+google_analytics: www.lhotka.net
