@@ -1,5 +1,7 @@
 theme: jekyll-theme-slate
 name: Rockford Lhotka
+title: Rockford Lhotka
+description: CTO at Magenic, creator of CSLA .NET, author, speaker
 markdown: kramdown
 permalink: /:year/:month/:day/:title
 plugins:
