@@ -7,10 +7,10 @@ title: Rockford Lhotka's Blog
 	<p>Rocky is CTO at Magenic, creator of CSLA .NET, author, speaker</p>
 </div><!-- /.blurb -->
 
-<h1>{{ page.title }}</h1>
-<ul class="posts">
+<hr>
 
+<ul class="posts">
 	{% for post in site.posts %}
-	<li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	<li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a><br/><span><em>        {{ post.date | date_to_string }}</em></span></li>
 	{% endfor %}
 </ul>
