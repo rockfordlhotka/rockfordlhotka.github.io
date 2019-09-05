@@ -1,18 +1,16 @@
 ---
 layout: default
-title: Rockford Lhotka
+title: Rockford Lhotka's Blog
 ---
 <div class="blurb">
 	<h1>Rockford Lhotka</h1>
 	<p>Rocky is CTO at Magenic, creator of CSLA .NET, author, speaker</p>
 </div><!-- /.blurb -->
 
-<div class="blurb">
-	<h2>Magenic</h2>
-	<p><a href="https://magenic.com">Magenic</a> is a consulting company that helps you build your digital products faster.</p>
-</div><!-- /.blurb -->
+<h1>{{ page.title }}</h1>
+<ul class="posts">
 
-<div class="blurb">
-	<h2>CSLA .NET</h2>
-	<p><a href="https://cslanet.com">CSLA .NET</a> is an open source .NET framework that provides a home for your business logic.</p>
-</div><!-- /.blurb -->
+	{% for post in site.posts %}
+	<li><span>{{ post.date | date_to_string }}</span> » <a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a></li>
+	{% endfor %}
+</ul>
