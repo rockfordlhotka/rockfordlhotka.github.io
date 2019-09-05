@@ -6,9 +6,9 @@ date: 2019-09-04
 
 I recently blogged about the new support coming in [CSLA 5 for Blazor](www.lhotka.net/weblog/BlazorSupportInCSLAV5.aspx). Shipping in .NET Core 3, [Blazor](https://blazor.net) is an HTML-based UI framework for WebAssembly.
 
-There's another very cool UI framework for WebAssembly that sits on top of .NET: [Uno Platform](https://platform.uno). 
+There's another very cool UI framework for WebAssembly that sits on top of .NET: [Uno Platform](https://platform.uno).
 
-![Uno Platform](Uno-Platform-And-WebAssembly-With-Csla-v5/uno-logo.png)
+![Uno Platform]({{ site.url }}/assets/Uno-Platform-And-WebAssembly-With-Csla-v5/uno-logo.png)
 ![CSLA](https://raw.github.com/MarimerLLC/csla/master/Support/Logos/csla%20win8_mid.png)
 
 This UI framework relies on XAML (specifically the UWP dialect) to not only reach WebAssembly, but also Android and iOS, as well as Windows 10 of course. In short, the Uno approach allows you to write one codebase that can run on:
@@ -34,7 +34,7 @@ You can see a working example of this in the [CSLA UnoExample sample app](https:
 
 Following typical CSLA best practices, you'll also add a .NET Standard 2.0 Class Library project for your business domain types, and at least one other for your data access layer implementation. You'll also normally have an ASP.NET Core project that acts as your application server, because a typical business app needs to interact with server-side resources like databases.
 
-![](Uno-Platform-And-WebAssembly-With-Csla-v5/solution-layout.png)
+![]({{ site.url }}/assets/Uno-Platform-And-WebAssembly-With-Csla-v5/solution-layout.png)
 
 It is important to understand that, like Xamarin Forms, the platform-specific projects for iOS, Android, UWP, and wasm have almost no code. They exist to bootstrap the app on each type of platform. This is true of the app server code also, it is just there to provide an endpoint for the apps. All the _real_ code is in the shared project, your business library, and your data access library.
 
@@ -314,7 +314,7 @@ This demonstrates a key feature of CSLA: location transparency. The data portal 
 
 > ℹ When editing XAML or codebehind a page you might find that you get all sorts of Intellisense errors. This can be resolved by making sure the Project dropdown in the upper-left of the code editor is set to `UnoExample.UWP`. It'll often default to some other project, and that causes the errors.
 
-![](Uno-Platform-And-WebAssembly-With-Csla-v5/code-editor-errors.png)
+![]({{ site.url }}/assets/Uno-Platform-And-WebAssembly-With-Csla-v5/code-editor-errors.png)
 
 In this example notice that the Project dropdown is set to `UnoExample.Droid`, and that is why the code editor is all confused.
 
@@ -355,7 +355,7 @@ The user is then able to edit the `Name` property, which has rules associated wi
 
 Again, I don't claim to be a UX designer, but this does demonstrate some of the capabilities available to a UI developer given the rich metastate provided by CSLA. The result looks like this:
 
-![](Uno-Platform-And-WebAssembly-With-Csla-v5/sample-ui.png)
+![]({{ site.url }}/assets/Uno-Platform-And-WebAssembly-With-Csla-v5/sample-ui.png)
 
 Once the user has edited the values on the page, they can click the button to save the person. That also relies on CSLA to provide location transparent code:
 
