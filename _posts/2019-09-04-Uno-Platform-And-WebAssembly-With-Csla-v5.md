@@ -4,7 +4,7 @@ title: Uno Platform and WebAssembly with CSLA
 date: 2019-09-04
 ---
 
-I recently blogged about the new support coming in [CSLA 5 for Blazor](https::/blog.lhotka.net/2019-09-02-BlazorSupportInCSLAV5). Shipping in .NET Core 3, [Blazor](https://blazor.net) is an HTML-based UI framework for WebAssembly.
+I recently blogged about the new support coming in [CSLA 5 for Blazor](https://blog.lhotka.net/2019/09/02/BlazorSupportInCslaV5). Shipping in .NET Core 3, [Blazor](https://blazor.net) is an HTML-based UI framework for WebAssembly.
 
 There's another very cool UI framework for WebAssembly that sits on top of .NET: [Uno Platform](https://platform.uno).
 
