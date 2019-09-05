@@ -1,4 +1,10 @@
 theme: jekyll-theme-slate
+tagline: CTO at Magenic, creator of CSLA .NET, author, speaker
+author :
+	  name : Rockford Lhotka
+	  github : rockfordlhotka
+	  twitter : rockylhotka
+	  feedburner : RockfordLhotka
 name: Rockford Lhotka
 title: Rockford Lhotka
 description: CTO at Magenic, creator of CSLA .NET, author, speaker
