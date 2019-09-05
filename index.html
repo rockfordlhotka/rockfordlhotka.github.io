@@ -3,14 +3,14 @@ layout: default
 title: Rockford Lhotka's Blog
 ---
 <div class="blurb">
-	<h1>Rockford Lhotka</h1>
-	<p>Rocky is CTO at Magenic, creator of CSLA .NET, author, speaker</p>
+	<h2>Blog Posts</h2>
 </div><!-- /.blurb -->
 
 <hr>
 
 <ul class="posts">
 	{% for post in site.posts %}
-	<li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a><br/><span><em>        {{ post.date | date_to_string }}</em></span></li>
+	<li><a href="{{ post.url }}" title="{{ post.title }}">{{ post.title }}</a><br/>
+		<span style="font-size: x-small"><em>        {{ post.date | date_to_string }}</em></span></li>
 	{% endfor %}
 </ul>
