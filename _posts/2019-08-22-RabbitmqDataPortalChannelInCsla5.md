@@ -4,7 +4,7 @@ title: RabbitMQ data portal channel in CSLA 5
 date: 2019-08-22T22:31:26.8919000-05:00
 ---
 
-I recently posted about the new [gRPC data portal channel coming in CSLA 5](http://www.lhotka.net/weblog/CSLA5DataPortalChannelUsingGRPC.aspx).
+I recently posted about the new [gRPC data portal channel coming in CSLA 5](https://blog.lhotka.net/2019/08/21/CslaDataPortalChannelUsingGrpc).
 
 I've also been working on a data portal channel based on using RabbitMQ as the underlying transport.
 
