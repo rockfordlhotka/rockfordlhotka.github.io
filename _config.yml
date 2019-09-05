@@ -4,3 +4,4 @@ markdown: kramdown
 permalink: /:year/:month/:day/:title
 plugins:
   - jekyll-sitemap
+github.is_project_page:
