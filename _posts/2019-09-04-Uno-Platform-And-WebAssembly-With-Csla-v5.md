@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Uno Platform and WebAssembly with CSLA v5
+title: Uno Platform and WebAssembly with CSLA
 date: 2019-09-04
 ---
 
