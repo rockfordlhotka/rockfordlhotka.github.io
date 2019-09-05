@@ -20,11 +20,11 @@ However, it has been a common practice for decades to use queues for bi-directio
 
 In this model callers (logical client-side code) sends requests to the data portal by sending a message to the data portal server's queue.
 
-![]({{ site.url }}assets/RabbitmqDataPortalChannelInCsla5/send-to-dp.png)
+![]({{ site.url }}/assets/RabbitmqDataPortalChannelInCsla5/send-to-dp.png)
 
 The data portal server processes those messages exactly as though they came in via HTTP or gRPC. The calls are routed to your business code, which can do whatever it wants on the server (typically talk to a database). When your business code is done, the response is sent back to each caller's respective reply queue.
 
-![]({{ site.url }}assets/RabbitmqDataPortalChannelInCsla5/reply-to-caller.png)
+![]({{ site.url }}/assets/RabbitmqDataPortalChannelInCsla5/reply-to-caller.png)
 
 This seems pretty intuitive and straightforward. The various request/response pairs are coordinated using something called a _correlation id_, which is just a unique value for each original request. Also, each request includes the name of its reply queue, making it easy to respond to the original caller.
 
