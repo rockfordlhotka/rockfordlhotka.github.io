@@ -2,6 +2,7 @@
 layout: post
 title: Blazor support in CSLA v5
 date: 2019-09-02
+featured-image: https://raw.github.com/MarimerLLC/csla/master/Support/Logos/csla%20win8_mid.png
 ---
 
 I'm excited about two things in our industry right now: containers (specifically Kubernetes) and WebAssembly (specifically [Blazor](https://blazor.net) and [Uno](https://platform.uno)).
