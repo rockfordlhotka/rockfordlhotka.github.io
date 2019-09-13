@@ -2,7 +2,6 @@
 layout: post
 title: "ASP.NET Core and CSLA 5"
 date: 2019-09-12
-featured-image: {{ site.url }}/assets/2019-09-12-AspCore-Csla5/all-validation.png
 ---
 
 I've recently blogged about how CSLA 5 [supports Blazor](https://blog.lhotka.net/2019/09/02/BlazorSupportInCslaV5) and how it [supports Uno](https://blog.lhotka.net/2019/09/04/Uno-Platform-And-WebAssembly-With-Csla-v5). Clearly I am bullish on WebAssembly.
