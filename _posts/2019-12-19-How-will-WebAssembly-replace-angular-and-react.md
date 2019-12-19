@@ -3,7 +3,6 @@ title: How will WebAssembly replace frameworks like Angular and React?
 weblogName: Rockford Lhotka
 postDate: 2019-12-19
 ---
-# How will WebAssembly replace frameworks like Angular and React?
 
 WebAssembly is a way to run compiled code in a browser.
 
