@@ -1,7 +1,7 @@
 ---
 title: What Architectures Were Used Before Microservices?
 weblogName: Rockford Lhotka
-postDate: 2019-12-29
+postDate: 2019-12-19
 ---
 Many architectures have been used over the decades. I’ll focus my answer on the 15 years or so immediately prior to today’s microservice fixation.
 
