@@ -11,7 +11,7 @@ That excitement carried forward through VB 6, then into .NET with Windows Forms,
 
 Fortunately today we have WebAssembly, with [Blazor](https://blazor.net) and [Uno](https://platform.uno) being examples of UI frameworks on top of this universal client app platform. I blogged my enthusiasm early on in the emergence of this technology: [A Bright Future for the Smart Client](http://www.lhotka.net/weblog/ABrightFutureForTheSmartClient.aspx).
 
-You can imagine that I've continued to be focused on WebAssembly and the Blazor UI framework. To this point, I recently published a [book on Blazor](https://store.lhotka.net/using-csla-5-blazor-and-webassembly).
+You won't be surprised to find that I've continued to be focused on WebAssembly and the Blazor UI framework. To this point, I recently published a [book on Blazor](https://store.lhotka.net/using-csla-5-blazor-and-webassembly).
 
 The first 6 chapters of this book are all about Blazor and how you can get started with this very cool UI framework:
 
