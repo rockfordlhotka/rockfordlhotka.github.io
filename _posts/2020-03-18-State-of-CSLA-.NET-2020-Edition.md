@@ -1,5 +1,5 @@
 ---
-title: State of CSLA .NET: 2020 Edition
+title: State of CSLA .NET 2020 Edition
 weblogName: Rockford Lhotka
 postDate: 2020-03-18
 ---
