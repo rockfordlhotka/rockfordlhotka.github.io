@@ -57,7 +57,7 @@ Thanks to Mozilla (and others) we now have the ability to escape the JavaScript 
 
 The end result is that all the amazing features of CSLA are now available to "web developers" via Blazor and other UI frameworks based on .NET WebAssembly.
 
-> I put "web developers" in quotes, because it is true that web developers are attracted to Blazor for many reasons. But so are traditional smart client developers from the Windows Forms, WPF, iOS, Android, GTK+, and other worlds. Blazor is a smart client UI framework that happens to run in browsers - so it appeals to web developers and smart client developers equally.
+> I put "web developers" in quotes, because it is true that web developers are attracted to Blazor for many reasons. But so are traditional smart client developers from the Windows Forms, WPF, iOS, Android, GTK+, and other platforms. Blazor is a smart client UI framework that happens to run in browsers - so it appeals to web developers and smart client developers equally.
 
 ### CSLA Excitement: Embrace Containers and WebAssembly
 
