@@ -21,13 +21,15 @@ From 2002 to 2008 was really the heyday of CSLA .NET. Many apps were n-tier, bui
 
 ### The Smart Client Fades
 
-I think there's validity to CSLA having become less relevant as the industry took (was forced down?) a path leading to some really horrific architectural choices. However, with the rebirth of the smart client via WebAssembly/Blazor (in particular), all the amazing power and capability of CSLA comes back into play.
+The industry took a detour into server-side web development for a long time. An environment in which CSLA become somewhat less compelling.
 
-Specifically, starting around 2008 it became clear that the only really affordable and viable client experience for enterprise apps was the browser. The iPad broke the hold Windows had over the enterprise user experience, and we swiftly learned it was too expensive to build every app's UI numerous times (for Windows, iOS, Android, etc), leaving only the browser.
+> As I'll discuss later however, the current rebirth of the smart client via WebAssembly/Blazor brings _all_ the amazing power and capability of CSLA back into play.
 
-A whole lot of "full stack" web software is really just server-side code in MVC or whatever: just like the mainframe/minicomputer world from 1990. Which is fine as far as it goes, but personally I find that world pretty boring, given that is where I started my career.
+Starting around 2008 it became clear that the only really affordable and viable client experience for enterprise apps was the browser. The iPad broke the hold Windows had over the enterprise user experience, and we swiftly learned it was too expensive to build every app's UI numerous times (for Windows, iOS, Android, etc), leaving the browser as the only viable client app dev target.
 
-The great news (for CSLA) is that server-side web pages and services all need business logic, and CSLA provides a home for business logic. That means important parts of CSLA (such as the rules engine and MVC data binding) remain extremely valuable for both full stack and modern web development. This can include the data portal in the case that your enterprise web app uses app servers in addition to web servers.
+A whole lot of "full stack" web software is really just server-side code in ASP.NET MVC or similar: just like the mainframe/minicomputer world from 1990. Which is fine as far as it goes, but personally I find that world pretty boring, given that is where I started my career (with server-side coding).
+
+CSLA remains relevant in this server-side web site and services world. Web sites and services all need business logic, and CSLA provides a home for business logic. That means important parts of CSLA (such as the rules engine and MVC data binding) remain extremely valuable for both full stack and modern web development. This can include the data portal in the case that your enterprise web app uses app servers in addition to web servers.
 
 Speaking of app servers these days always makes me think of containers.
 
