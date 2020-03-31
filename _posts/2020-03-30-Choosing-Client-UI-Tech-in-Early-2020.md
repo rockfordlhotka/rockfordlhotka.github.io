@@ -156,4 +156,4 @@ Here's a way to compare the capabilities I've discussed with the broad technolog
 
 Green is good, yellow is doable but perhaps limited or challenging, red is hard or impossible, gray is not applicable.
 
-You can see clearly that Xamarin and Blazor are the most capable and flexible of the options.
+You can see clearly that Xamarin is the most capable and flexible of the options, but it lacks the simplicity of web deployment. Blazor has web deployment and offers a great deal of capability. And it is a good bet that Blazor will have more capabilities in the future.
