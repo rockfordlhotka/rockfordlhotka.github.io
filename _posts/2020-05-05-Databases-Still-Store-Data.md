@@ -23,7 +23,7 @@ My point is that you don't need an RDBMS to build enterprise solutions. They are
 
 I also had an opportunity to use a hierarchical database on the VAX. I don't remember, and can't find, the name of the database, but it was built directly on the indexed file system and so had nearly no overhead. Certainly nothing compared to Rdb!
 
-My next exposure to an RDBMS was Access on Windows 3.0. This wasn't a bad experience, and in 1993 when VB 3.0 came out with access to the underlying JET database (the engine underneath Access at the time), my time and I build quite a number of apps.
+My next exposure to an RDBMS was Access on Windows 3.0. This wasn't a bad experience, and in 1993 when VB 3.0 came out with access to the underlying JET database (the engine underneath Access at the time), my team and I built quite a number of apps.
 
 The thing I want to call out here, is that the RDBMS _concepts_ of normalizing data weren't new to me. We'd been using them since my first introduction to the indexed file system around 1987.
 
