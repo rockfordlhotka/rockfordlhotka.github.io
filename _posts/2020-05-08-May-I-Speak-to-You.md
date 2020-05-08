@@ -31,6 +31,7 @@ I'll let everyone know when this does come online.
 
 In the meantime, enjoy some recent online presentations.
 
+* [DotNetRocks Show (CSLA .NET 5.1.0 release)](https://www.dotnetrocks.com/?show=1683)
 * [UCI School of Business Executive Briefing (Moving Your Apps to the Cloud)](https://www.youtube.com/watch?v=h4Bf98pYm28)
 * [A Geek Leader interview](https://www.youtube.com/watch?v=HTeXCf4eNGE)
 * [CMG Executive Insights Event (Building Your Cloud-Ready DX Roadmap)](https://www.youtube.com/watch?v=BMg7RLwFYko)
