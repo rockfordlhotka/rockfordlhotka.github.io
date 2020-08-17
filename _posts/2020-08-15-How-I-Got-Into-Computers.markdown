@@ -1,6 +1,6 @@
 ---
 layout: post
-title: How I Got Into Computers
+title: How I Got Into Computers Youth Edition
 date: 2020-08-15T00:00:00.0000000-05:00
 featuredImageUrl: https://blog.lhotka.net/assets/2020-08-15-How-I-Got-Into-Computers/rotary-phone-modem.png
 ---
