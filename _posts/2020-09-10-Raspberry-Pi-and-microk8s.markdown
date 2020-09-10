@@ -25,7 +25,7 @@ Here's a photo of the original cluster build based on Robert's template.
 
 Here are the basic components:
 
-* Base Raspberry Pi 4 4gb computer - [similar to this](https://smile.amazon.com/LoveRPi-Raspberry-Computer-Heatsinks-4GB/dp/B07WHZW881)
+* 4 base Raspberry Pi 4 4gb computers - [similar to this](https://smile.amazon.com/LoveRPi-Raspberry-Computer-Heatsinks-4GB/dp/B07WHZW881)
 * Raspberry Pi 4 stack case - [similar to this](https://smile.amazon.com/iUniker-Raspberry-Cluster-Heatsink-4-Layers/dp/B07CTG5N3V)
 * External case fan - [similar to this](https://smile.amazon.com/AC-Infinity-MULTIFAN-Receiver-Playstation/dp/B00MWH4FL4)
 * 4 32gb SD cards - [similar to this](https://smile.amazon.com/SanDisk-Ultra-microSDXC-Memory-Adapter/dp/B073JWXGNT)
