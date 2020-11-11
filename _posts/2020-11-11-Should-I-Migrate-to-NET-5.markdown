@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Should I Migrate to .NET 5?
+title: Should I Migrate to .NET 5
 date: 2020-11-11T00:00:00.0000000-06:00
 categories: []
 tags: []
