@@ -1,13 +1,8 @@
 ---
 layout: post
-title: Should I Migrate to DotNet 5
+title: Should I Migrate to .NET 5?
 date: 2020-11-11
-categories: []
-tags: []
-{}
 ---
-# Should I Migrate to .NET 5?
-
 Now that [Microsoft has released .NET 5](https://devblogs.microsoft.com/dotnet/announcing-net-5-0/), you are probably wondering whether you should start using .NET 5, and perhaps more importantly whether you should migrate existing code to .NET 5.
 
 We've had some good discussion around this within [Magenic](https://magenic.com), with some folks arguing against the use of .NET 5, and others taking a more nuanced view.
