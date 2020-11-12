@@ -15,9 +15,9 @@ Microsoft now uses an LTS model (long term support) for .NET releases. The LTS m
 
 .NET Core 3.0 was _not_ LTS, and .NET Core 3.1 _is_ LTS. So this week all support for .NET Core 3.0 ended, because .NET 5 came out. However, .NET Core 3.1 continues to be supported, because it is the LTS release.
 
-.NET 5 is _not and LTS release_, which means that it'll go off support when .NET 6 comes out in about a year.
+.NET 5 is _not an LTS release_, which means that it'll go off support when .NET 6 comes out in about a year.
 
-In summary, if your org is a low-risk type org, you should plan to only use LTS releases, and you should ignore intermediate releases. This way you'll only need to switch from one .NET release to the next every 2-3 years instead of more frequently.
+In general, if your org is a low-risk type org, you should plan to only use LTS releases, and you should ignore intermediate releases. This way you'll only need to switch from one .NET release to the next every 2-3 years instead of more frequently.
 
 However, the intermediate releases often provide compelling features, fixes, and so might be worth using, if your acceptance of risk allows it.
 
