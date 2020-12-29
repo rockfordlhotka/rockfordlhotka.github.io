@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How I Got Into Computers First Job Hunt Edition
-date: 2020-12-29T08:00:00.0000000-06:00
+date: 2020-12-29T00:00:00.0000000-06:00
 categories: []
 tags: []
 ---
@@ -21,7 +21,7 @@ I also had no comprehension of what people _actually did_ with computer programm
 
 As a result, my future was this big empty field of endless, but totally undefined, opportunity. All I knew was that I really enjoyed programming, and had discovered that I was pretty good at it.
 
-Sadly, I graduated near the end of the Ronald Reagan era, and trickle down economics had created a nasty recession. In Minnesota thousands of software developers and engineers were being laid off by some of the biggest computer companies at the time. This meant that I, as a newly graduated student, was competing with lots of experienced folks.
+Sadly, I graduated near the end of the Ronald Reagan era, and trickle down economics had created a nasty recession. In Minnesota, thousands of software developers and engineers were being laid off by some of the biggest computer companies at the time. This meant that I, as a newly graduated student, was competing with lots of experienced folks.
 
 I rapidly realized a few things. First, the vast majority of jobs were in cities, not in rural areas. Second, it was virtually impossible to run a job search from a remote area (remember, this is 1987, all pre-Internet). Third, living in the Twin Cities (for example) was _way_ more expensive than living in any rural area.
 
@@ -51,7 +51,7 @@ I started out answering only ads I qualified for based on the requirements liste
 
 > In today's world finding out what anything is is just a google search away, but that sure wasn't true in the mid-1980s! Nor could I ask family or friends, because no one I knew was in the computer field.
 
-After a month or so, of having very few applications out and no positive feedback (and hardly any negative feedback either), I decided to broaden my search. Which really meant applying for jobs that advertised for 5-7 years experience. Basically, anything around 5 or less was fair game, and if the job mentioned things I actually _knew_, like VAX, FORTRAN, or Pascal then I'd go hirer.
+After a month or so, of having very few applications out and no positive feedback (and hardly any negative feedback either), I decided to broaden my search. Which really meant applying for jobs that advertised for 5-7 years experience. Basically, anything around 5 or less was fair game, and if the job mentioned things I actually _knew_, like VAX, FORTRAN, or Pascal then I'd go higher.
 
 The result was more feedback, mostly negative. But some positive and I actually got some interviews. One flew me to California actually, the others were in the Twin Cities. None of those resulted in offers, but it was movement! Hope!
 
