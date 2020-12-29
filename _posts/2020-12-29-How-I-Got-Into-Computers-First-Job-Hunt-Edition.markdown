@@ -1,7 +1,7 @@
 ---
 layout: post
 title: How I Got Into Computers First Job Hunt Edition
-date: 2020-12-27T00:00:00.0000000-06:00
+date: 2020-12-29T08:00:00.0000000-06:00
 categories: []
 tags: []
 ---
