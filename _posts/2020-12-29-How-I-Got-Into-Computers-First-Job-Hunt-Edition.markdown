@@ -59,11 +59,11 @@ During this time I had been talking to a professor at NDSU in Grand Forks, ND. T
 
 Well into August I had an interview with this company just outside the city to the west, and darned if they didn't offer me a job! Not well paying, but _a real job_ doing real computer programming!!
 
-Needless to say I jumped at the job!
+Needless to say I jumped at the opportunity!
 
 About two weeks after I started, I got a call from the NDSU professor offering me a spot in the newly formed grad program. Maybe it was three weeks? I think I had received my first paycheck, and was drunk on the money!
 
-> That's a joke. The job paid $20k/year, which even in the 80's wasn't actually enough to pay rent, food, gas, and other life expenses as a single person. At least not in the Twin Cities.
+> That's a joke. The job paid $20k/year, which even in the 80's barely enough to pay student loans, rent, food, gas, and other life expenses for myself and my then-girlfriend. At least not in the Twin Cities.
 
 But seriously, the fact that, after months of searching and painful data entry work, I finally had an actual professional programming job was overwhelming enough that I turned down a move back to university. This disappointed the professor greatly. I remember the anger in his voice to this day! So perhaps I dodged something bad there, because working for people who anger easily is never a fun thing.
 
