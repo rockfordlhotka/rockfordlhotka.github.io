@@ -4,7 +4,7 @@ title: How I Got Into Computers First Job Edition
 date: 2021-01-04T00:00:00.0000000
 categories: []
 tags: []
-featuredImageUrl: https://blog.lhotka.net/assets/2021-01-04-How-I-Got-Into-Computers-First-Job-Edition/truck-tracker.png
+featuredImageUrl: https://blog.lhotka.net/assets/2021-01-04-How-I-Got-Into-Computers-First-Job-Edition/pdp-11-hd.png
 ---
 This is the fifth post in a series about how I got into computers and how my career has unfolded.
 
