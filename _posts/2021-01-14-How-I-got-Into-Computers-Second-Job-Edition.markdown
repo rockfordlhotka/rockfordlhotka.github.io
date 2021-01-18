@@ -4,7 +4,6 @@ title: How I got Into Computers Second Job Edition
 date: 2021-01-14T00:00:00.0000000-06:00
 categories: []
 tags: []
-published: false
 permalink: 
 featuredImageUrl: 
 ---
