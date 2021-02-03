@@ -4,7 +4,7 @@ title: Configuring and extending a service
 date: 2021-02-03T00:00:00.0000000-06:00
 categories: []
 tags: []
-published: false
+published: true
 permalink: 
 featuredImageUrl: 
 ---
