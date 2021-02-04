@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Configuring and extending a service
-date: 2021-02-03T00:00:00.0000000-06:00
+date: 2021-02-03T00:19:00.0000000-06:00
 categories: []
 tags: []
 published: true
@@ -134,14 +134,16 @@ If you have done any work with ASP.NET Core or Blazor, you have seen helper meth
   {
     public static IServiceCollection AddExtensiblityExample(this IServiceCollection services)
     {
-      services.AddSingleton<ExtensibleExample.ExtensibilityPoint1>((s) => s.SomeState = 0);
-      services.AddSingleton<ExtensibleExample.ExtensibilityPoint2>((s) => s.SomeState = 0);
-      services.AddSingleton<ExtensibleExample.ExtensibilityPoint3>((s) => s.SomeState = 0);
-      services.AddTransient<ExtensibleExample>();
+      services.TryAddSingleton<ExtensibleExample.ExtensibilityPoint1>((s) => s.SomeState = 0);
+      services.TryAddSingleton<ExtensibleExample.ExtensibilityPoint2>((s) => s.SomeState = 0);
+      services.TryAddSingleton<ExtensibleExample.ExtensibilityPoint3>((s) => s.SomeState = 0);
+      services.TryAddTransient<ExtensibleExample>();
       return services;
     }
   }
 ```
+
+I am using `TryAddSingleton` and `TryAddTransient` in the extension method, because this way if I have already registered something for the type the extension method will not override or replace that registration. The regular `AddSingleton` and `AddTransient` methods will replace any existing registration for the type, which is what you want in your app startup code, but not in an extension method that is setting defaults.
 
 With this extension method, the app startup code can be simplified:
 
@@ -159,8 +161,6 @@ The extension method registers all the types required for the `ExtensibilityExam
       services.AddSingleton<ExtensibleExample.ExtensibilityPoint1>((s) => s.SomeState = 42);
       var provider = services.BuildServiceProvider();
 ```
-
-It is important (⚠) to note that order matters! The "overrides" need to be registered _after the `AddExtensibilityExample` method. Reverse the order, and the extension method will override any previous registrations.
 
 I like this quite a bit better, because now there are simple, predefined default behaviors, and if I do add an extensibilty point in the future, I can just add it to the extension method and everyone's code keeps working.
 
@@ -219,8 +219,8 @@ Using an options type doesn't prevent me from also having an extension method. I
   {
     public static IServiceCollection AddExtensiblityExample(this IServiceCollection services)
     {
-      services.AddSingleton<ExtensibleExampleOptions>();
-      services.AddTransient<ExtensibleExample>();
+      services.TryAddSingleton<ExtensibleExampleOptions>();
+      services.TryAddTransient<ExtensibleExample>();
       return services;
     }
   }
