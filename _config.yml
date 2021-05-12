@@ -7,7 +7,7 @@ author :
   feedburner : RockfordLhotka
 name: Rockford Lhotka
 title: Rockford Lhotka
-description: CTO at Magenic, creator of CSLA .NET, author, speaker
+description: CTO, Open Source Creator, Author, Speaker
 markdown: kramdown
 permalink: /:year/:month/:day/:title
 plugins:
