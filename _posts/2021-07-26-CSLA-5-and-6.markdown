@@ -1,0 +1,64 @@
+---
+layout: post
+title: CSLA 5 and 6
+date: 2021-07-26T00:00:00.0000000-05:00
+categories: []
+tags: []
+published: true
+permalink: 
+featuredImageUrl: 
+---
+First, I'm pleased to announce the release of [CSLA .NET](https://cslanet.com) version 5.5.0, which includes one enhancement and a number of bug fixes.
+
+All the details are on the [CSLA v5.5.0 release](https://github.com/MarimerLLC/csla/releases/tag/v5.5.0) page.
+
+This is intended to be the last enhancement release of CSLA 5, with all future work going into CSLA 6.
+
+Second, I want to provide an update on the progress of CSLA 6, which is planned for release in November to coincided with Microsoft's release of .NET 6.
+
+CSLA 6 includes _major_ changes, mostly necessary to keep pace with changes to .NET itself. You can see the [CSLA 6 project board](https://github.com/MarimerLLC/csla/projects/11) on GitHub.
+
+> ℹ CSLA .NET is open source, and we _love_ [contributions](https://github.com/MarimerLLC/csla/blob/main/CONTRIBUTING.md)! If you are looking for a project, and/or some of the backlog items look interesting to you, please reach out.
+
+Some CSLA 6 highlights:
+
+## Framework targets
+
+CSLA 6 adds support for .NET 6, and drops support for .NET Framework prior to version 4.6.1, and even that is temporary, with the goal being to support only 4.8. The primary focus, as it is with .NET itself, is now on "modern" .NET 6 and later. The current CSLA 6 targets are:
+
+* .NET Framework 4.6.1
+* .NET Framework 4.7.2
+* .NET Framework 4.8.0
+* .NET Standard 2.0
+* .NET 5.0
+* .NET 6.0
+
+## Removing Older Frameworks
+
+CSLA 6 ends support for older versions of the .NET Framework. It also removes Entity Framework 4 and 5, and ASP.NET 4.
+
+The Remoting and WCF data portal channels are also being removed. Microsoft has discouraged the use of Remoting for many years, and WCF is no longer part of modern .NET. We may consider providing them as satellite packages like we already do for the gRPC and RabbitMQ data portal channels, depending on community feedback.
+
+## Dependency Injection
+
+Server-side Blazor _requires_ the use of dependency injection (DI) to manage things like the current user identity. That means CSLA _must_ use DI to manage the current user and other per-user state, resulting in a top-to-bottom overhaul of configuration, the data portal, and many other types that used to be created directly, and now are provided via DI. This work is ongoing, [tracked via this PR](https://github.com/MarimerLLC/csla/pull/2359).
+
+This requirement has a cascade of changes that will impact the configuration of most CSLA-based apps, and will impact anyone who has created custom data portal channels and some other advanced scenarios. It should have little or no impact on actual business classes.
+
+## Data Portal Enhancements
+
+CSLA 6 continues the data portal enhancements started in CSLA 5, now eliminating a number of legacy base class methods that we recommended moving away from in CSLA 5. This is part of a modernization roadmap, where we started _supporting_ DI in version 5 and we're _requiring_ it in version 6.
+
+If you've been updating your older `DataPortal_XYZ` methods to the the CSLA 5 model that uses the operation attributes (like `Fetch`, `Create`, etc.) then your code should be ready for CSLA 6. Otherwise, CSLA 6 will force those changes that were optional-but-recommended in version 5.
+
+## Configuration
+
+In CSLA 5 we added fluent configuration. Which was really nice, and some of that work was leveraged when we added support for DI-based configuration in CSLA 5. In CSLA 6, direct use of fluent configuration will be replaced by DI configuration. That's a side-effect of requiring DI.
+
+## Conclusion
+
+I've discussed only a few of the changes coming in CSLA 6. Check the project board and the [CSLA Discussion forum](https://github.com/MarimerLLC/csla/discussions) for more info and to participate in the process.
+
+Thanks to Blazor and MAUI and Linux containers, I haven't been this excited about .NET in many years, and CSLA 6 embraces all these technologies. 
+
+The goal is that your existing business classes move forward into this exciting new .NET world with little to no change, preserving your business logic as your server code becomes containerized and your client code becomes cross-platform and available on nearly every device.
