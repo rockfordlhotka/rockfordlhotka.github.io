@@ -70,6 +70,6 @@ I was able to indicate whether I'm left or right handed, and there was a tutoria
 
 And a pointer to configure the haptic feedback. I've seen at least one tweet where someone didn't notice the haptic feedback at all when drawing with the pen. My experience is that it is subtle but noticeable. It really does feel similar to drawing or writing with a sharp pencil on paper. I get why Microsoft talked about the feature, as it is nice. Not a game changer though.
 
-Subsequent times I've pull the pen from its magnetic charge spot under the keyboard, a little toolbar pops up with a (customizable) pallet of pen-friendly apps I might want to launch. Windows 10 had something sort of like this in the system tray, but the Windows 11 approach is simpler.
+Subsequent times I've pulled the pen from its magnetic charge spot under the keyboard, a little toolbar pops up with a (customizable) pallet of pen-friendly apps I might want to launch. Windows 10 had something sort of like this in the system tray, but the Windows 11 approach is simpler.
 
 I might discuss Windows 11 in another post. For now I'll just say that they moved a bunch of cheese, and generally cleaned up a host of little annoyances from Windows 10. I haven't spent much time with it yet, but I'm having no trouble adapting, and overall think it is a slightly nicer version of Windows 10.
