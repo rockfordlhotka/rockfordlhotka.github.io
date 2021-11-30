@@ -8,7 +8,8 @@ published: true
 permalink: 
 featuredImageUrl: 
 ---
-![Picture of person balancing work and life](wlb.png)
+()
+![Picture of person balancing work and life](/assets/2021-11-29-Gatekeeping,-Passion,-Career,-and-Life/wlb.png)
 
 tl;dr - This got long, sorry. But it is a complex topic, ill-suited to twitter. Not that even this long post is a complete treatment of the topic(s) or my thoughts. Still, the conclusion is good: I want to employ people who provide good value for their pay, who enjoy their lives, and who continue to enjoy life now and into the future.
 
