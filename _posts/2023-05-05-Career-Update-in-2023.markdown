@@ -5,8 +5,8 @@ date: 2023-05-05T00:00:00.0000000-05:00
 categories: []
 tags: []
 published: true
-permalink: ''
-featuredImageUrl: ''
+permalink:
+featuredImageUrl:
 ---
 It has been a minute since I blogged, so this will be a newsy post.
 
