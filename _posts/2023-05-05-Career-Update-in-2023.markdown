@@ -7,10 +7,6 @@ tags: []
 published: true
 permalink: ''
 featuredImageUrl: ''
-layout: post
-date: 2023-05-02T00:00:00.0000000-05:00
-tags: '[  ]'
-published: true
 ---
 It has been a minute since I blogged, so this will be a newsy post.
 
@@ -24,9 +20,9 @@ And that is still a large part of my life. I have been speaking and working on #
 
 I _am_ available for consulting and training around CSLA and related topics, so feel free to [reach out](https://about.me/rockfordlhotka) if that's of interest to you.
 
-Late last summer my friend and colleague [Marcel de Vries](https://github.com/vriesmarcel) and I were having a conversation, and he managed to get me excited about their opening a US presence for [Xebia `|` Xpirit](https://xpirit.com/). Enough that I joined Xpirit USA in September.
+Late last summer my friend and colleague [Marcel de Vries](https://github.com/vriesmarcel) and I were having a conversation, and he managed to get me excited about their opening a US presence for [Xebia \| Xpirit](https://xpirit.com/). Enough that I joined Xpirit USA in September.
 
-![Xebia-Xpirit logo](/assets/2023-05-02-Career-Update-in-2023/Xebia-Xpirit-logo.png)
+![Xebia \| Xpirit logo](/assets/2023-05-02-Career-Update-in-2023/Xebia-Xpirit-logo.png)
 
 My role is primarily focused on leveraging my experiences at two previous consulting orgs as each grew from very small to at or over 1000 consultants. Obviously the industry keeps changing, and not all lessons learned in the past still apply, but at its core the _business_ of consulting hasn't really changed, so a lot of successes and failures in the past translate to today quite nicely.
 
