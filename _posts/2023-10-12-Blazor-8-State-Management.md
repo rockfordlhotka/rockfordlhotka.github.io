@@ -14,6 +14,8 @@ https://github.com/dotnet/aspnetcore/issues/47796
 
 I suspect this state management issue is going to be a major hurdle for Blazor developers who want to create rich Blazor apps and also use the new .NET 8 capabilities. This blog post won't provide a _solution_ to the problem, but now that RC2 is available I thought it was a good time to at least document the "normal" behaviors you will have to deal with.
 
+A code demo for this can be found here: https://github.com/rockfordlhotka/Blazor8State
+
 ## .NET 6 and 7 Behavior
 
 First, it is important to understand that in .NET 6 and 7 there were really two models for Blazor: server and wasm (WebAssembly). In both cases, a dependency injection (DI) scope was created by Blazor that would exist for the lifetime of our app.
