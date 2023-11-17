@@ -105,4 +105,4 @@ This was almost certain a lot of work, and it is important to take time to pause
 
 If you are using CSLA .NET and would like to engage me for advisory services around modernization of your apps, please reach out. My contact information is on my [link tree](https://linktr.ee/rockylhotka).
 
-If you are doing any sort of cloud modernization, perhaps taking this opportunity to not only modernize to .NET 8, but also to leverage Azure and GitHub cloud services, please reach out to [Xebia|Xpirit](https://xpirit.com), as we are experts in cloud modernization for infrastructure, devops, and cloud-native app dev.
+If you are doing any sort of cloud modernization, perhaps taking this opportunity to not only modernize to .NET 8, but also to leverage Azure and GitHub cloud services, please reach out to [Xebia\|Xpirit](https://xpirit.com), as we are experts in cloud modernization for infrastructure, devops, and cloud-native app dev.
