@@ -7,7 +7,7 @@ author :
   feedburner : RockfordLhotka
 name: Rockford Lhotka
 title: Rockford Lhotka
-description: CTO, Open Source Creator, Author, Speaker
+description: VP, Open Source Creator, Author, Speaker
 markdown: kramdown
 permalink: /:year/:month/:day/:title
 plugins:
