@@ -48,7 +48,7 @@ Nasty!
 
 ### Solution
 
-The solution (thanks to [@jeffhandley](https://elk.zone/fosstodon.org/@jeffhandley@hachyderm.io)) is to add `type="button"` to all non-submit `button` components.
+The solution (thanks to [@jeffhandley](https://hachyderm.io/@jeffhandley)) is to add `type="button"` to all non-submit `button` components.
 
 It turns out that the default HTML for `<button />` is `type="submit"`, so if you don't override that value, then all buttons trigger a submit.
 
