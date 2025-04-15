@@ -8,11 +8,9 @@ layout: default
   {{ content }}
 </div>
 
-<!-- {% include adsense.html %} -->
-
-<!-- <hr> -->
-
+{% if site.disqus %}
 <!-- Post comments -->
-<!-- <div class="postcomments">
-{% include disqus.html %}	 
-</div> -->
+<div class="postcomments">
+  {% include disqus.html %}
+</div>
+{% endif %}
