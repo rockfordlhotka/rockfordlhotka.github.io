@@ -147,8 +147,8 @@ The end result is that you get what appears to be an app icon on your phone, PC,
 
 Most people want the edit documents and maybe spreadsheets on their PC. A lot of people, including me, use Word and Excel for this purpose. Those apps aren't available on Linux - at least not directly. Fortunately there are good alternatives, including:
 
-1. Use https://onedrive.com to create and edit documents and spreadsheets in the browser
-2. Use https://office.com to access Office online if you have a subscription
+1. Use [https://onedrive.com](https://onedrive.com) to create and edit documents and spreadsheets in the browser
+2. Use [https://office.com](https://office.com) to access Office online if you have a subscription
 3. Install [LibreOffice](https://www.libreoffice.org/), an open-source office productivity suite sort of like Office
 
 I use OneDrive for a lot of personal documents, photos, etc. And I use actual Office for work. The LibreOffice idea is something I might explore at some point, but the online versions of the Office apps are usually enough for casual work - which is all I'm going to do on the little Surface Go device anyway.
@@ -165,13 +165,13 @@ The limitation is that I can only edit documents while online, but for my purpos
 
 ## Conclusion
 
-At this point I'm pretty happy. I don't expect to use this little device to do any major software development, but it actually does run vscode and .NET just fine (and also Jetbrains Rider if you like that).
+At this point I'm pretty happy. I don't expect to use this little device to do any major software development, but it actually does run vscode and .NET just fine (and also Jetbrains Rider if you prefer a more powerful option).
 
 I mostly use it for browsing the web, discord, Mastodon, and Bluesky.
 
 Will I bring this with when I travel? No, because my normal Windows 11 PC does everything I want.
 
-Could I live with this as my "one device"? Well, no, but that's because it is underpowered and physically too small. 
+Could I live with this as my "one device"? Well, no, but that's because it is underpowered and physically too small.
 
 But could I live with a modern laptop running Ubuntu? Yes, I certainly could. I wouldn't _prefer_ it, because I like full-blown Visual Studio and way too many high end Steam games.
 
