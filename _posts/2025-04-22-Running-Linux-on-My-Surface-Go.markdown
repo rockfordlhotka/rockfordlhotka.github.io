@@ -8,7 +8,7 @@ published: true
 permalink: 
 featuredImageUrl: 
 ---
-![Surface Go running Ubuntu]({{ site.url }}/assets/2025-04-22-Running-Linux-on-My-Surface-Go/PXL_20250422_195349182.jpg)
+![Surface Go running Ubuntu]({{ site.url }}/assets/2025-04-22-Running-Linux-on-My-Surface-Go/PXL_20250422_235524108.PORTRAIT.jpg)
 
 I have a first-generation Surface Go, the little 10" tablet Microsoft created to try and compete with the iPad.
 
