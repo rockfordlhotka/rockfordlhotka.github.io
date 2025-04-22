@@ -20,11 +20,11 @@ It turns out that the Surface Pro does that too, without having to carry a secon
 
 I've been saying for quite some time that I think people need to [look at Linux as a way to avoid the e-waste involved in discarding their Windows 10 PCs](https://blog.lhotka.net/2024/12/15/Do-not-throw-away-your-old-PCs) - the ones that can't run Windows 11. I use Linux regularly, though usually via the command line for software development, and so I thought I'd put it on my Surface Go to gain real-world experience.
 
-> I have quite a few friends and family who have Windows 10 devices that are perfectly good. Some of those folks don't want to buy a new PC, due to financial constraints, or just because they don't think their current PC is a problem. End of support for Windows 10 is a problem!
+> I have quite a few friends and family who have Windows 10 devices that are perfectly good. Some of those folks don't want to buy a new PC, due to financial constraints, or just because their current PC works fine. End of support for Windows 10 is a problem for them!
 
 The Surface Go is a bit trickier than most mainstream Windows 10 laptops or desktops, because it is a convertable tablet with a touch screen and specialized (rare) hardware - as compared to most of the devices in the market. So I did some reading, and used Copilot, and found a decent (if old) [article on installing Linux on a Surface Go](https://www.zdnet.com/article/how-i-put-linux-on-a-microsoft-surface-go-in-just-an-hour/).
 
-> ⚠️ One quick warning: Surface Go was designed around Windows, and while it does work reasonably well with Linux, it isn't as good. Scrolling is a bit laggy, and the cameras don't have the same quality (by far). If you want to use the Surface Go as a small, lightweight laptop I think it is pretty good; if you are looking for a good _tablet_ experience you should probably just buy a new device.
+> ⚠️ One quick warning: Surface Go was designed around Windows, and while it does work reasonably well with Linux, it isn't as good. Scrolling is a bit laggy, and the cameras don't have the same quality (by far). If you want to use the Surface Go as a small, lightweight laptop I think it is pretty good; if you are looking for a good _tablet_ experience you should probably just buy a new device - and donate the old one to someone who needs a basic PC.
 
 Fortunately, Linux hasn't evolved all that much or all that rapidly, and so this article remains pretty valid even today.
 
