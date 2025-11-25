@@ -1,7 +1,7 @@
 ---
 layout: post
 title: AI Skeptic to AI Pragmatist
-postDate: 2025-11-17T17:39:53.3750407-05:00
+postDate: 2025-11-25T14:39:53.3750407-05:00
 categories: []
 tags: []
 published: true
@@ -19,6 +19,8 @@ The thing is, I have spent the past few months intentionally using AI to help me
 The point of this post is to talk about my experience with actually using AI successfully, and what I've learned along the way.
 
 In my view, as an industry and society we need to discuss the ethics of AI. That discussion needs to move past a start point that says "AI isn't useful", because it turns out that AI can be useful, if you know how to use it effectively. Therefore, the discussion needs to acknowledge that AI is a useful tool, and _then_ we can discuss the ethics of its use.
+
+![AI Pragmatist]({{ site.url }}/assets/2025-25-17-AI-Skeptic-to-AI-Pragmatist/ai-hero.png)
 
 ## The Learning Curve
 
@@ -83,6 +85,30 @@ If you are asking a question, be explicit that you are asking a question and loo
 
 GitHub Copilot allows you to put markdown files with pre-built prompts into a `prompts` folder under `.github`. You can then reference these prompts in your code comments to have Copilot use them using the standard `#` file reference syntax. This is a great way to standardize prompts across your team.
 
+## Switch Models as Needed
+
+You may find that different AI models work better for various purposes or tasks.
+
+For example, I often use Claude Sonnet 4.5 for writing documentation, because it seems to produce clearer and more concise text than other models. However, I often use GPT-5-Codex for code generation, because it seems to understand code better.
+
+> That said, I know other people who do the exact opposite, so your mileage may vary. The key is to experiment with different models and see which ones work best for your specific needs.
+
+The point is that you don't have to stick with a single model for everything. You can switch models as needed to get the best results for your specific tasks.
+
+In GitHub Copilot there is a cost to using premium models, with a multiplier. So (at the moment) Sonnet 4.5 is a 1x multiplier, while Haiku is a 0.33x multiplier. Some of the older and weaker models are 0x (free). So you can balance cost and quality by choosing the appropriate model for your task.
+
+## Agent Mode vs Ask Mode
+
+GitHub Copilot has two primary modes of operation: Agent Mode and Ask Mode. Other tools often have similar concepts.
+
+In Ask mode the AI responds to your prompts in the chat window, and doesn't modify your code or take other actions. The vscode and Visual Studio UIs usually allow you to _apply_ the AI's response to your code, but you have to do that manually.
+
+In Agent mode the AI can modify your code, create files, and take other actions on your behalf. This is more powerful, but also more risky, because the AI might make changes that you don't want or expect.
+
+I'd recommend starting with Ask mode until you are comfortable with the AI's capabilities and limitations. Once you are comfortable, you can switch to Agent mode for more complex tasks. Agent mode is a _massive_ time saver as a developer!
+
+By default, Agent mode does prompt you for confirmation in most cases, and you can disable those prompts over time to loosen the restrictions as you become more comfortable with the AI.
+
 ## Don't Trust the AI
 
 The AI can and _will_ make mistakes. Especially if you ask it to do something complex, or look across a large codebase. For example, I asked Copilot to create a list of all the classes that implemented an interface in the CSLA .NET codebase. It got most of them, but not all of them, and it included some that didn't implement the interface. I had to manually review and correct the list.
@@ -90,6 +116,18 @@ The AI can and _will_ make mistakes. Especially if you ask it to do something co
 I think it might have been better to ask the AI to give me a grep command or something that would do a search for me, rather than trying to have it do the work directly.
 
 However, I often have the AI look at a limited set of files and it is almost always correct. For example, asking the AI for a list of properties or fields in a single class is usually accurate.
+
+## Use Git Commit like "Save Game"
+
+I've been a gamer for most of my life, and one thing I've learned from gaming is the concept of "save games". In many games, you can save your progress at any point, and then reload that save if you make a mistake or want to try a different approach.
+
+This is true for working with AI as well. Before you ask the AI to make significant changes to your code, make a git commit. This way, if the AI makes changes that you don't want or expect, you can easily revert to the previous state.
+
+I find myself making a commit any time I get compiling code, passing tests, or any other milestone - even a small one. THis IS how you can safely experiment with AI without fear of losing your work.
+
+> I'm not saying push to the server or do a pull request (PR) every time - just a local commit is sufficient for this purpose.
+
+Sometimes the AI will go off the rails and make a mess of your code. Having a recent commit allows you to quickly get back to a known good state.
 
 ## Create and Use MCP Servers
 
