@@ -20,7 +20,7 @@ The point of this post is to talk about my experience with actually using AI suc
 
 In my view, as an industry and society we need to discuss the ethics of AI. That discussion needs to move past a start point that says "AI isn't useful", because it turns out that AI can be useful, if you know how to use it effectively. Therefore, the discussion needs to acknowledge that AI is a useful tool, and _then_ we can discuss the ethics of its use.
 
-![AI Pragmatist]({{ site.url }}/assets/2025-25-17-AI-Skeptic-to-AI-Pragmatist/ai-hero.png)
+![AI Pragmatist]({{ site.url }}/assets/2025-11-25-AI-Skeptic-to-AI-Pragmatist/ai-hero.png)
 
 ## The Learning Curve
 
