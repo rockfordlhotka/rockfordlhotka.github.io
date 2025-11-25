@@ -16,7 +16,7 @@ I still don't know that AI is "good" in any objective sense. It consumes a lot o
 
 The thing is, I have spent the past few months intentionally using AI to help me do software design and development, primarily via Copilot in VS Code and Visual Studio, but also using Cursor and a couple other AI tools.
 
-The point of this post is to talk about my experience with actually using AI successfully, and what I've learned along the way. 
+The point of this post is to talk about my experience with actually using AI successfully, and what I've learned along the way.
 
 In my view, as an industry and society we need to discuss the ethics of AI. That discussion needs to move past a start point that says "AI isn't useful", because it turns out that AI can be useful, if you know how to use it effectively. Therefore, the discussion needs to acknowledge that AI is a useful tool, and _then_ we can discuss the ethics of its use.
 
@@ -45,13 +45,15 @@ To that point, it is sometimes a good idea to save your context in a document, s
 
 Notice that I sometimes use the term "we" when talking to the AI. This is on purpose, because I have found that it is best to think of the AI as a collaborator, rather than a tool. This mindset shift is important, because it changes the way you interact with the AI.
 
+> Don't get me wrong - I don't think of the AI as a person - it really _is a tool_. But it is a tool that can collaborate with you, rather than just a tool that you use.
+
 When you think of the AI as a collaborator, you are more likely to provide it with the context it needs to do its job effectively. You are also more likely to review and refine its output, rather than just accepting it at face value.
 
 ## Rate of Change
 
 Even in the short time I've been actively using AI, the models and tools have improved significantly. New features are being added all the time, and the capabilities of the models are expanding rapidly. If you evaluated AI a few months ago and decided it wasn't useful for a scenario, it might well be able to handle that scenario now. Or not. My point is that you can't base your opinion on a single snapshot in time, because the technology is evolving so quickly.
 
-## Effectie Use of AI
+## Effective Use of AI
 
 AI itself can be expensive to use. We know that it consumes a lot of water and electricity, so minimizing its use is important from an ethical standpoint. Additionally, many AI services charge based on usage, so minimizing usage is also important from a cost standpoint.
 
@@ -65,6 +67,8 @@ GitHub Copilot will automatically use a special file you can put in your repo's 
 /.github/copilot-instructions.md
 ```
 
+It now turns out that you can put numerous files in an `instructions` folder under `.github`, and Copilot will use all of them. This is great for organizing your instructions into multiple files.
+
 This file can contain any instructions you want Copilot to use when generating code. I have found this to be very helpful for providing context to Copilot without having to type it in every time. Not per-prompt instructions, but overall project instructions. It is a great place to put the "Who am I?", "Who are you?", "Who is the end user?", "What are we building?", "Why are we building it?", "How are we building it?", and "What are the constraints?" items mentioned above.
 
 You can also use this document to tell Copilot to use specific MCP servers, or to avoid using certain ones. This is useful if you want to ensure that your code is only generated using models that you trust.
@@ -76,6 +80,8 @@ Feel free to use terms like "always" or "never" in your prompts. These aren't fo
 Avoid being passive or unclear in your prompts. Instead of saying "It would be great if you could...", say "Please do X". This clarity helps the AI understand exactly what you want.
 
 If you are asking a question, be explicit that you are asking a question and looking for an answer, otherwise the AI (in agent mode) might just try to build code or other assets based on your question, thinking it was a request.
+
+GitHub Copilot allows you to put markdown files with pre-built prompts into a `prompts` folder under `.github`. You can then reference these prompts in your code comments to have Copilot use them using the standard `#` file reference syntax. This is a great way to standardize prompts across your team.
 
 ## Don't Trust the AI
 
@@ -95,3 +101,10 @@ The results of the AI when using an MCP server like this are _substantially_ bet
 
 You can also build your own MCP server for your organization, project, or codebase. Such a server can provide code snippets, patterns, documentation, and other information specific to your context, which can greatly improve the quality of the AI's output.
 
+I wrote a blog post about [building a simple MCP server](https://marimerllc.com/2025/10/15/building-a-simple-mcp-server/).
+
+## Conclusion
+
+AI is a useful tool for software development, but it is not magic. You have to learn how to use it effectively, and you have to be willing to review and refine its output. By thinking of the AI as a collaborator, providing it with context, and using MCP servers, you can get much better results.
+
+As an industry, we need to move past the idea that AI isn't useful, and start discussing how to use it ethically and effectively. Only then can we fully understand the implications of this technology and make informed decisions about its use.
