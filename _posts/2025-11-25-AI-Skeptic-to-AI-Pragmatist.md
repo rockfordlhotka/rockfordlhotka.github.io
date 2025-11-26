@@ -139,7 +139,7 @@ The results of the AI when using an MCP server like this are _substantially_ bet
 
 You can also build your own MCP server for your organization, project, or codebase. Such a server can provide code snippets, patterns, documentation, and other information specific to your context, which can greatly improve the quality of the AI's output.
 
-I wrote a blog post about [building a simple MCP server](https://marimerllc.com/2025/10/15/building-a-simple-mcp-server/).
+I wrote a blog post about [building a simple MCP server](https://blog.lhotka.net/2025/10/02/A-Simple-CSLA-MCP-Server).
 
 ## Conclusion
 
