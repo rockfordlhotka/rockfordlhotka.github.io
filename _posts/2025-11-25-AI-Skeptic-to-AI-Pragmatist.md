@@ -30,7 +30,7 @@ For example, I started out trying to just "vibe code" with simple prompts, expec
 
 To get any reasonable results, it is necessary to provide context to the AI beyond expressing a simple desire. There are various patterns for doing this. The one I've been using is this:
 
-1. Who am I? (e.g. "You are a senior software engineer with 10 years of experience in C# and .NET.")
+1. Who am I? (e.g. "I am a senior software engineer with 10 years of experience in C# and .NET.")
 2. Who are you? (e.g. "You are an AI assistant that helps software engineers write high-quality code.")
 3. Who is the end user? (e.g. "The end users are financial analysts who need to access market data quickly and reliably.")
 4. What are we building? (e.g. "You are building a RESTful API that provides access to market data.")
