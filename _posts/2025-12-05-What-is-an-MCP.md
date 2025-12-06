@@ -16,7 +16,7 @@ When someone asks me "what is an MCP", it is clear that they aren't asking about
 
 At its core, MCP is nothing more than a protocol like REST or GraphQL. It's a way for different software systems to communicate with each other, specifically in the context of AI models. It is a client-server style protocol, where the client (often an AI model) makes requests to the server (a tool) to perform specific actions or retrieve information.
 
-Another way to look at it, is that "a MCP Server" is an endpoint that exposes this MCP protocol. The server can be called by any client that understands the MCP protocol, including AI models.
+Another way to look at it, is that "an MCP Server" is an endpoint that exposes this MCP protocol. The server can be called by any client that understands the MCP protocol, including AI models.
 
 Yet a third way people talk about MCP is that "an MCP" is an implementation of some software that does something useful - which happens to expose its behavior as an MCP Server endpoint via the MCP protocol.
 
@@ -42,7 +42,7 @@ In this post though, I really don't want to get into the details of the MCP prot
 
 What most people _really_ want to know, is "what is an MCP" in the context of building AI systems. Why should I care about MCP?
 
-In this context, an MCP server should be viewed as an API that is designed to be called by AI models. The idea is to allow an AI model to do things like:
+An MCP server should be viewed as an API that is designed to be called by AI models. The idea is to allow an AI model to do things like:
 
 - Access up-to-date information (e.g. weather, news, stock prices)
 - Perform actions (e.g. book a flight, send an email)
@@ -88,7 +88,7 @@ For example, an MCP server might be designed to manage a specific domain, such a
 
 ### Tools and Methods
 
-Once the scope is defined, the next step is to identify the tools and methods that the MCP server will expose. This involves breaking down the functionality into discrete actions that the AI model can perform. The granularity of these tools will depend on the specific use case and the needs of the AI model. In general, I would expect them to be at a high level of abstraction as compared to a traditional API or microservice.
+Once the scope is defined, the next step is to identify the tools and methods that the MCP server will expose. This involves breaking down the functionality into discrete actions that the AI model can perform. The granularity of these tools will depend on the specific use case and the needs of the AI model. In general, I would expect them to be at a higher level of abstraction as compared to a traditional API or microservice.
 
 For example, instead of exposing low-level CRUD operations for managing customer data, an MCP server might expose higher-level tools for "Create Customer Profile", "Update Customer Preferences", or "Retrieve Customer Purchase History". These tools would encapsulate the underlying complexity of the operations, making it easier for the AI model to use them effectively.
 
@@ -96,7 +96,7 @@ For example, instead of exposing low-level CRUD operations for managing customer
 
 Actually implementing the MCP protocol by hand would involve understanding JSON-RPC and how it is used by MCP. Fortunately, there are packages available for most programming platforms and languages that already implement the protocol, allowing developers to focus on building the actual tools and methods.
 
-The most obviouus choice is the [ModelContextProtocol](https://github.com/modelcontextprotocol) packages on GitHub.
+The most obvious choice is the [ModelContextProtocol](https://github.com/modelcontextprotocol) packages on GitHub.
 
 Rather than learning and implementing the protocol itself, use packages like these to focus on building the server and tools.
 
@@ -104,13 +104,13 @@ Rather than learning and implementing the protocol itself, use packages like the
 
 Testing an MCP server directly from an AI model can be challenging, especially in the early stages of development. Fortunately, there are tools available that can help with this process.
 
-The most obvious choice is the [MCP Inspector](https://github.com/modelcontextprotocol/inspector). The MCP Inspector is a tool that allows developers to interactively test and debug MCP servers. It provides a user interface for exploring the available tools and methods, making requests, and viewing responses.
+A common option is the [MCP Inspector](https://github.com/modelcontextprotocol/inspector). The MCP Inspector is a tool that allows developers to interactively test and debug MCP servers. It provides a user interface for exploring the available tools and methods, making requests, and viewing responses.
 
 Once you know that your MCP server is working correctly with the Inspector, you can then test it with an actual AI model. This will help ensure that the AI model can effectively use the MCP server to perform the desired actions and retrieve the necessary information.
 
 ### Iterate and Improve
 
-The odds of getting the MCP server and its tools right on the first try are very low. Remember that your _consumer_ is an AI agent, which is probabilistic and is in some ways more like a naive human than a traditional software application.
+The odds of getting the MCP server and its tools right on the first try are very low. Remember that your _consumer_ is an AI agent, which is probabilistic and is in some ways more like a naïve human than a traditional software application.
 
 ![Iteration](/assets/2025-12-05-What-is-an-MCP/iterate.png)
 
@@ -131,6 +131,17 @@ These days most good server systems use open telemetry for logging and tracing. 
 
 As with any logging, be mindful of privacy and security concerns. Avoid logging sensitive information, and ensure that any logged data is stored securely.
 
+## Security and Identity
+
+Similarly, I didn't mention security and identity in the steps above, but these are also very important considerations when building an MCP server.
+
+Usually this occurs at a couple levels:
+
+- Is the client authorized to access the MCP server at all?
+- Does the client represent a specific user or identity, and if so, what permissions does that identity have?
+
+Of every topic in this post, security and identity is the most complex, and the one that is most likely to evolve over time. As of this writing (end of 2025), there are few established best practices for handling security and identity in MCP servers.
+
 ## What is in an MCP Server?
 
 Everything I've said so far is great, but still doesn't answer one of the underlying questions: is an MCP server AI, or just used by AI?
@@ -139,17 +150,25 @@ The answer is: it depends.
 
 ![AI calling MCP](/assets/2025-12-05-What-is-an-MCP/ai-mcp.png)
 
-In many cases, an MCP tool be be used by the AI model to get up to date information from external systems. In theses cases, it is probably best to write traditional code that accesses databases, APIs, or other data sources, and exposes that data via an MCP server. Because context is critical for AI models, a tool like this should provide the requested data, often with additional context to help the AI model understand how to use the data.
+### Getting Data
+
+In many cases, an MCP tool be be used by the AI model to get up to date information from external systems. In these cases, it is probably best to write traditional code that accesses databases, APIs, or other data sources, and exposes that data via an MCP server. Because context is critical for AI models, a tool like this should provide the requested data, often with additional context to help the AI model understand how to use the data.
+
+#### Retrieval-Augmented Generation
 
 You may encounter the term "RAG" or retrieval-augmented generation in this context. This is a technique where an AI model retrieves relevant information from an external source (like a database or document store) to provide context for generating a response. An MCP tool that provides up-to-date information can be a key part of a RAG system. Technically RAG uses AI models to do the work, but these AI models aren't what most of us think of as "AI systems". They are specialized models that are focused on encoding text into vector arrays.
 
+### Performing Actions
+
 In other cases, an MCP tool might change or update data in external systems. Again, this is probably best done with traditional code that performs the necessary actions, and exposes those actions via an MCP server. Remember that most traditional APIs are not designed to be called by AI models, so the MCP server should provide a higher-level abstraction that is easier for the AI model to understand and use. Here too, context is critical. Usually this context comes from the descriptions of the tools, methods, and parameters.
+
+### Using AI Inside an MCP Server
 
 In some cases though, an MCP server might be implemented using AI itself. For example, you might expose some complex functionality to other AI models, where the logic is too complex to implement with traditional code. In these cases, you might use an AI model to process the requests and generate the responses.
 
 For example, you might have a business process that involves complex and specialized knowledge and judgement. In this case, you might use an AI model tuned for that specific domain. This allows a non-specialized AI model, like a chatbot or something, to request that the specialized "sub-agent" perform the complex task on its behalf.
 
-### Specialized Sub-Agents
+#### Specialized Sub-Agents
 
 There are different techinques for building a specialized AI model for use in an MCP server implementation. These include:
 
