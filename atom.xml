@@ -2,7 +2,7 @@
 layout: feed
 ---
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
+<feed xmlns="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
 
 	<title>Rockford Lhotka's Blog</title>
 	<link href="https://blog.lhotka.net/atom.xml" rel="self"/>
@@ -19,6 +19,9 @@ layout: feed
 			<link href="https://blog.lhotka.net{{ post.url }}"/>
 			<updated>{{ post.date | date_to_xmlschema }}</updated>
 			<id>https://blog.lhotka.net{{ post.id }}</id>
+			{% if post.featuredImageUrl %}
+			<media:thumbnail url="https://blog.lhotka.net{{ post.featuredImageUrl }}"/>
+			{% endif %}
 			<content type="html">{{ post.content | xml_escape }}</content>
 		</entry>
 	{% endfor %}
