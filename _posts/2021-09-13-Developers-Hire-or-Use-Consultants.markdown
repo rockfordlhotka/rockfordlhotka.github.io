@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: https://blog.lhotka.net/assets/2021-09-13-Developers-Hire-or-Use-Consultants/industry-overlap.png
+image: https://blog.lhotka.net/assets/2021-09-13-Developers-Hire-or-Use-Consultants/industry-overlap.png
 ---
 [This Venturebeat article](https://venturebeat.com/2021/09/13/the-it-talent-gap-is-still-growing/) highlights some of the very real challenges organizations face in acquiring and retaining software development talent.
 

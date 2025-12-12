@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: https://blog.lhotka.net/assets/2021-05-11-Responsible-Use-Of-Open-Source-In-Enterprise-Software/oss.png
+image: https://blog.lhotka.net/assets/2021-05-11-Responsible-Use-Of-Open-Source-In-Enterprise-Software/oss.png
 ---
 [*Originally published on Forbes*](https://www.forbes.com/sites/forbestechcouncil/2021/04/07/responsible-use-of-open-source-in-enterprise-software/?sh=3bb294e27bcf)
 

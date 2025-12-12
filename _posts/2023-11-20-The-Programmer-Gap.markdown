@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 Like many people, I've been thinking quite a lot about the impact of AI on the software development industry. Based on the current state of the Copilot technologies from GitHub and Microsoft in Visual Studio Code and Visual Studio (and increasingly in other tools), here's one of my concerns: there will soon be a "programmer gap".
 

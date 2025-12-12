@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: /assets/2025-12-02-Agent-vs-Agentic/agent-agentic.png
+image: /assets/2025-12-02-Agent-vs-Agentic/agent-agentic.png
 ---
 From Copilot:
 

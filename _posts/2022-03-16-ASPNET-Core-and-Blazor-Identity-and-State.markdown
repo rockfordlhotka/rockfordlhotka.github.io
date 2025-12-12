@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 Over the past several weeks I've been wrestling with the way in which ASP.NET Core (aspnetcore) and server-side Blazor manage things like context, identity, and state. This post won't cover _everything_, but I want to at least document what I've learned (with the help of some great people from the #cslanet community).
 

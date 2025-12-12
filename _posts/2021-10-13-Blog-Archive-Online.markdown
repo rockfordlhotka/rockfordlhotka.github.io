@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 A while ago I switched from my self-hosted dasBlog site to a GitHub-hosted jekyll site. This has been good in many ways, but all my pre-exising blog content went offline as a result.
 

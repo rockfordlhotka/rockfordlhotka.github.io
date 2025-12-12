@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 Given all that's happening at Twitter I, like many people, started looking at alternatives like Mastodon.
 

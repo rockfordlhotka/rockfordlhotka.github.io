@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 A few weeks ago I posted about the idea of [removing the sync APIs from a future version of CSLA .NET](https://blog.lhotka.net/2024/05/23/Deprecating-CSLA-Synchronous-APIs). That post included a poll, and this post will summarize the results of that poll.
 

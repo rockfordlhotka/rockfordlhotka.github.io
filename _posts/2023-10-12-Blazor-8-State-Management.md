@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 A few months ago I filed an issue for discussion in GitHub regarding managing per-user state in Blazor in .NET 8.
 

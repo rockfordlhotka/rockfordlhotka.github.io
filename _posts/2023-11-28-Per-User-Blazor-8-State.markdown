@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 About a month ago I created a blog post detailing an issue with the new Blazor 8 automatic rendering model, where there's [no built-in way to have per-user state within a Blazor app](https://blog.lhotka.net/2023/10/12/Blazor-8-State-Management).
 

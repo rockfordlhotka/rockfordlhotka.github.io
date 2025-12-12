@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 As many people know, [Windows 10 is coming to its end of life](https://www.microsoft.com/en-us/windows/end-of-support?msockid=3dbbf3e5ab5462f63beae0e1aa2063fd&r=1) (or at least end of support) in 2025.
 

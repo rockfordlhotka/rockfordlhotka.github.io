@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 ![Picture of person balancing work and life](/assets/2021-11-29-Gatekeeping,-Passion,-Career,-and-Life/wlb.png)
 

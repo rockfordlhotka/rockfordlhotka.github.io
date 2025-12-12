@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: /assets/2025-12-12-Copilots-Everywhere/3copilots.png
+image: /assets/2025-12-12-Copilots-Everywhere/3copilots.png
 ---
 Microsoft has done its customers no favors with reusing the "Copilot" name for multiple products. I honestly don't know how many different Copilots are out there now.
 

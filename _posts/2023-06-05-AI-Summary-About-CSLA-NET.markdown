@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 I wanted to see what the Bing AI (ChatGPT basically) had to say about CSLA .NET. I did tweak the result a little, but the vast majority of the following content was generated, and I think the results are pretty good.
 

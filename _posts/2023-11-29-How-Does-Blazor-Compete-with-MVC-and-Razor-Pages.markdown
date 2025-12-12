@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 In a recent LinkedIn post, my friend and colleague [Rachel Appel](https://www.linkedin.com/in/rachelappel/) summarized a Jetbrains survey that included a question on which ASP.NET Core frameworks are being used.
 

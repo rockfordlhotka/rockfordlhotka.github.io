@@ -2,7 +2,7 @@
 layout: post
 title: Desktop Kubernetes, Helm, RabbitMQ
 date: 2020-09-17T00:00:00.0000000-05:00
-featuredImageUrl: https://blog.lhotka.net/assets/2020-09-17-Desktop-Kubernetes,-Helm,-RabbitMQ/docker-k8s.png
+image: https://blog.lhotka.net/assets/2020-09-17-Desktop-Kubernetes,-Helm,-RabbitMQ/docker-k8s.png
 ---
 This week I taught a [2 day hands-on lab](https://vslive.com/events/training-seminars/2020/new-york/home.aspx) (HOL) focused on .NET Core, Kubernetes, and microservice architecture, for [VS Live](https://vslive.com).
 

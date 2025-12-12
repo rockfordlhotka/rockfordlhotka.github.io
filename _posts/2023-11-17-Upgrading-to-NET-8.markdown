@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 At [VS Live](https://vslive.com) in Orlando this week there were a number of people who had questions about upgrading to .NET 8; mostly from .NET Framework 4.5 or similar versions that are no longer supported.
 

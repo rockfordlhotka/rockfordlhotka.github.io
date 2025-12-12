@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 I mostly blog about tech topics, and don't fancy myself to be a [JD Meier](https://www.linkedin.com/in/jdmeier/) by any means.
 

@@ -19,8 +19,8 @@ layout: feed
 			<link href="https://blog.lhotka.net{{ post.url }}"/>
 			<updated>{{ post.date | date_to_xmlschema }}</updated>
 			<id>https://blog.lhotka.net{{ post.id }}</id>
-			{% if post.featuredImageUrl %}
-			<media:thumbnail url="https://blog.lhotka.net{{ post.featuredImageUrl }}"/>
+			{% if post.image %}
+			<media:thumbnail url="https://blog.lhotka.net{{ post.image }}"/>
 			{% endif %}
 			<content type="html">{{ post.content | xml_escape }}</content>
 		</entry>

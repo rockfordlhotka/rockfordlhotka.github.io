@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: https://blog.lhotka.net/assets/2018-03-24-A-Bright-Future-for-the-Smart-Client/oldweb.png
+image: https://blog.lhotka.net/assets/2018-03-24-A-Bright-Future-for-the-Smart-Client/oldweb.png
 ---
 tl;dr: We're just starting on the biggest revolution in smart client *and* web client development technology in many, many, many years. Now is an extremely exciting time to be a smart client developer, or to rediscover smart client development if you (like me) have been hiding in server-side code over the past decade or so. WebAssembly is the technology that may reshape the way we build client-side software, and it is really cool!
 

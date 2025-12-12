@@ -5,7 +5,7 @@ date: 2021-01-14T00:00:00.0000000-06:00
 categories: []
 tags: []
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 This is the sixth post in a series about how I got into computers and how my career has unfolded.
 

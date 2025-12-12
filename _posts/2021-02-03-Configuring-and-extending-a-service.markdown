@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 CSLA has been around for over 23 years now, with the first [CSLA .NET](https://cslanet.com) version released concurrently with .NET Framework 1.0. Over the years it has changed to take advantage of, or allow developers to take advantage of, new and exciting features of .NET, such as generics, async/await, dependency injection, and more.
 

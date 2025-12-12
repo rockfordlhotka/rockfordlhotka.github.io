@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 I am excited to say that I'm taking the next step in my career: becoming self-employed to focus fully on open-source, speaking, and writing. With maybe a little consulting here and there.
 

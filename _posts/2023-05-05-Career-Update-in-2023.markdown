@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink:
-featuredImageUrl:
+image:
 ---
 It has been a minute since I blogged, so this will be a newsy post.
 

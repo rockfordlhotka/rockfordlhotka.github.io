@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 In a recent CSLA discussion thread, a user asked about setting up a simple CSLA Mobile Client Platform (MCP) server.
 

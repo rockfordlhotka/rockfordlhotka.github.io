@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 The first prerelease of CSLA .NET version 6.0.0 is now in NuGet.
 

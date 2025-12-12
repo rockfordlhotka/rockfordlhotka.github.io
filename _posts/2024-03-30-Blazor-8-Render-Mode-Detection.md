@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 In .NET 8 the Blazor UI framework introduced some new render modes for components and pages. The available render modes are now:
 

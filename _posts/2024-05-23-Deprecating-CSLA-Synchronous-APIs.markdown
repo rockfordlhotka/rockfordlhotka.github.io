@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 Over the years (decades actually), [CSLA](https://cslanet.com) has gone through many, many major changes.
 

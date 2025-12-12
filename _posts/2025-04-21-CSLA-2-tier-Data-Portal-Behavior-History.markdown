@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 The CSLA data portal originally treated 2- and 3-tier differently, primarily for performance reasons.
 

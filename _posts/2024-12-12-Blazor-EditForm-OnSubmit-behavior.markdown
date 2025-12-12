@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 I am working on the open-source [KidsIdKit](https://github.com/missingchildrenmn/KidsIdKit) app and have encountered some "interesting" behavior with the `EditForm` component and how buttons trigger the `OnSubmit` event.
 

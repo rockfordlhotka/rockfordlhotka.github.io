@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: /assets/2025-12-05-What-is-an-MCP/mcp.png
+image: /assets/2025-12-05-What-is-an-MCP/mcp.png
 ---
 Recently I've been fielding a number of questions about MCP, or Model Context Protocol. So I thought I'd write a quick post to explain what it is, and why it's important.
 

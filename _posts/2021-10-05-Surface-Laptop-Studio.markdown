@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: https://blog.lhotka.net/assets/2021-10-05-Surface-Laptop-Studio/closed-box.png
+image: https://blog.lhotka.net/assets/2021-10-05-Surface-Laptop-Studio/closed-box.png
 ---
 I've been in love with the Surface Pro since it first came out. I've owned every version that's come out over the years, and it is like the device was made just for me: the perfect combination of power, light weight, battery life, and the ability to use it as a tablet.
 

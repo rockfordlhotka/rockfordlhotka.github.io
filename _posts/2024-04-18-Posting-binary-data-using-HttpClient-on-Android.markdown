@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 There is an issue folks have encountered when using the .NET `HttpClient` service to do a `POST` to an ASP.NET Core controller, where the payload of the post is binary data.
 

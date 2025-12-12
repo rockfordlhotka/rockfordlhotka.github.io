@@ -3,7 +3,7 @@ layout: post
 title: Raspberry Pi and microk8s
 date: 2020-09-10T00:00:00.0000000-05:00
 categories: kubernetes raspberry-pi
-featuredImageUrl: https://blog.lhotka.net/assets/2020-09-10-Raspberry-Pi-and-microk8s/pi-cluster.png
+image: https://blog.lhotka.net/assets/2020-09-10-Raspberry-Pi-and-microk8s/pi-cluster.png
 ---
 Months ago I followed in the footsteps of Robert Sirchia as he blogged about [setting up a Kubernetes cluster on Raspberry Pi devices](https://sirchia.cloud/posts/kubernetes-and-pi/).
 

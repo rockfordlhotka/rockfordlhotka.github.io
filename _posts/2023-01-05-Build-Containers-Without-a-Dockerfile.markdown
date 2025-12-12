@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 Containers are rapidly becoming the primary deployment model for server-side code, whether that be a web site, an app server, or other server-side code that you need to run in your environment.
 

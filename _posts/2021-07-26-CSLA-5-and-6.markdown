@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 First, I'm pleased to announce the release of [CSLA .NET](https://cslanet.com) version 5.5.0, which includes one enhancement and a number of bug fixes.
 

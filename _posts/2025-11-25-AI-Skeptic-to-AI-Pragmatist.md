@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl:
+image:
 ---
 A few months ago I was an AI skeptic. I was concerned that AI was similar to Blockchain, in that it was mostly hype, with little practical application outside of a few niche use cases.
 

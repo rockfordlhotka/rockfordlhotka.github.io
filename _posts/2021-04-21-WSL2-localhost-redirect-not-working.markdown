@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: https://blog.lhotka.net/assets/2021-04-21-WSL2-localhost-redirect-not-working/tweet.png
+image: https://blog.lhotka.net/assets/2021-04-21-WSL2-localhost-redirect-not-working/tweet.png
 ---
 I was very excited to see [preview 3 of .NET 6](https://devblogs.microsoft.com/dotnet/announcing-net-6-preview-3/) come out, especially with the hot reload enabled for Blazor.
 

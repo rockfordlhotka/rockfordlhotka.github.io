@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 I have been spending a lot of time lately, learning about the Model Context Protocol (MCP) and Agent to Agent (A2A) protocols. And a little about a slightly older technology called the activity protocol that comes from the Microsoft bot framework.
 

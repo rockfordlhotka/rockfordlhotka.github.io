@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 ![Surface Go running Ubuntu]({{ site.url }}/assets/2025-04-22-Running-Linux-on-My-Surface-Go/PXL_20250422_235524108.PORTRAIT.jpg)
 

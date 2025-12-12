@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 It can be challenging to choose a UI technology in today's world. Even if you narrow it down to wanting to build "native" apps for phones, tablets, and PCs there are so many options.
 

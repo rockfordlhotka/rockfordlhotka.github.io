@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 One of the most powerful features of [CSLA .NET](https://cslanet.com) is its business rules engine. It allows you to encapsulate validation, authorization, and other business logic in a way that is easy to manage and maintain.
 

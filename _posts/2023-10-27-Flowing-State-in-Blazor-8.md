@@ -6,7 +6,7 @@ categories: []
 tags: []
 published: true
 permalink: 
-featuredImageUrl: 
+image: 
 ---
 In a recent blog post I discussed [Blazor 8 State Management](https://blog.lhotka.net/2023/10/12/Blazor-8-State-Management), laying out a potential pitfall that Blazor app developers will encounter when using the new automatic render mode introduced in .NET 8.
 
