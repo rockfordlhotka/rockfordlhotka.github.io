@@ -6,11 +6,11 @@ categories: []
 tags: []
 published: true
 permalink:
-image: /assets/2026-02-24-Agent-Memory-Systems/rockbot-thinking.png
+image: /assets/2026-02-24-Agent-Memory-Systems/RockBot-thinking.png
 ---
 Many AI models have no persistent memory. Every conversation starts fresh. They don't remember what you told them yesterday, last week, or five minutes ago in a different chat window. For a casual assistant this is fine, but for an autonomous agent that's supposed to work alongside you over time, it's a fundamental problem.
 
-![RockBot](/assets/2026-02-24-Agent-Memory-Systems/rockbot-thinking.png)
+![RockBot memory](/assets/2026-02-24-Agent-Memory-Systems/RockBot-thinking.png)
 
 I've been building an AI agent called [RockBot])(https://github.com/MarimerLLC/rockbot), and one of the most interesting design challenges has been figuring out how memory should work. Not just chat history — but real memory. The kind that lets an agent know your preferences, recall context from past conversations, manage temporary scratch data, and hand off large results between sub-tasks.
 
