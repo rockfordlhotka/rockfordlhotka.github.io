@@ -12,7 +12,7 @@ Many AI models have no persistent memory. Every conversation starts fresh. They 
 
 ![RockBot memory](/assets/2026-02-24-Agent-Memory-Systems/RockBot-thinking.png)
 
-I've been building an AI agent called [RockBot])(https://github.com/MarimerLLC/rockbot), and one of the most interesting design challenges has been figuring out how memory should work. Not just chat history — but real memory. The kind that lets an agent know your preferences, recall context from past conversations, manage temporary scratch data, and hand off large results between sub-tasks.
+I've been building an AI agent called [RockBot](https://github.com/MarimerLLC/rockbot), and one of the most interesting design challenges has been figuring out how memory should work. Not just chat history — but real memory. The kind that lets an agent know your preferences, recall context from past conversations, manage temporary scratch data, and hand off large results between sub-tasks.
 
 What I landed on is a three-tier memory architecture. Each tier serves a distinct purpose and has different characteristics around lifetime, scope, and storage.
 
