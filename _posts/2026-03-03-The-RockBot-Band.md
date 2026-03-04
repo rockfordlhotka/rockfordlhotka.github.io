@@ -6,10 +6,10 @@ categories: []
 tags: [ai, agents, rockbot, mcp, dotnet]
 published: true
 permalink:
-image: /assets/2026-03-03-The-RockBot-Band/rockbot-band.png
+image: /assets/2026-03-03-The-RockBot-Band/RockBot-band.png
 ---
 
-![RockBot Band](/assets/2026-03-03-The-RockBot-Band/rockbot-band.png)
+![RockBot Band](/assets/2026-03-03-The-RockBot-Band/RockBot-band.png)
 
 Over the past several months I've been building a set of open source projects that each solve a specific problem in the AI agent space. Individually they're useful. Together they form the foundation for building truly agentic systems that run in production environments like Kubernetes or Azure.
 
