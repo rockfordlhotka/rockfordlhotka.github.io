@@ -13,9 +13,11 @@ image: /assets/2026-04-02-Systems-Thinking/systems-thinking.png
 
 There is a lot of fear-mongering and hand-wringing about AI right now, and what it will do to jobs and the economy.
 
-I think some of those concerns are _extremely_ valid, and I really am very concerned that our politictians,business leaders, and social leaders aren't ready to help us all navigate the coming changes. I suspect they are at a level similar to the Industrial Revolution, or how we ended up with the Rust Belt in the US.
+I think some of those concerns are _extremely_ valid, and I really am very concerned that our politictians, business leaders, and social leaders aren't ready to help us all navigate the coming changes. I suspect they are at a level similar to the Industrial Revolution, or how we ended up with the Rust Belt in the US.
 
-The thing is, I'm not an economist, and I'm going to try and stay in my lane: the software development industry. Our industry is a canary in the coal mine, and I've started to develop some thoughts on what AI means to us as software developers, and what it means to the software development industry.
+My view is that a lot of the fear-mongering is overblown as well. While I strongly suspect we're headed for a period of pain as a lot of jobs change radically, I'm optimistic that the long-term result has the potential to be positive.
+
+The thing is, I'm not an economist, and I'm going to try and stay in my lane: the software development industry. In this case, our industry is a canary in the coal mine, and I've started to develop some thoughts on what AI means to us as software developers, and what it means to the software development industry.
 
 > It is important to realize that the "software development industry" is a bit odd, because most of the people in this industry are technically getting paid by _other industries_. Most businesses have IT departments, and there are a lot of software developers working in those departments. You could say they are in the healthcare, or manufacturing, or some other industry; but really they are part of the software development industry, because they are writing software. So when I talk about the software development industry, I'm talking about all the people who write software, regardless of what industry they are in.
 
