@@ -11,7 +11,7 @@ image: /assets/2026-05-30-Are-AI-Agents-Conscious/featured-image.png
 
 ![Are AI Agents Conscious?](/assets/2026-05-30-Are-AI-Agents-Conscious/featured-image.png)
 
-A former colleague recently posted a LinkedIn challenge: if any developer today can hold a conversation about basic OO or procedural concepts, why can't they hold a meaningful conversation about whether AI is conscious? Fair enough. I'll take a swing at it.
+A former colleague recently [posted a LinkedIn challenge](https://www.linkedin.com/posts/imaginativeuniversal_if-i-asked-a-software-developer-working-on-share-7466543806398660608-HX8S/): if any developer today can hold a conversation about basic OO or procedural concepts, why can't they hold a meaningful conversation about whether AI is conscious? Fair enough. I'll take a swing at it.
 
 But first I want to push back on the setup.
 
@@ -36,6 +36,8 @@ These three components are genuinely distinct, and consciousness (if it exists a
 **The LLM** is just a microservice. It accepts input — usually text — does a large amount of vector math with some randomization baked in, and returns output. Then it forgets everything. It is stateless by design. There is no persistence, no accumulating experience, no inner life between calls. An LLM is a sophisticated mathematical function, not an entity.
 
 **The Harness** is where most of the complexity actually lives. The harness manages memory across turns, orchestrates tool calls, handles interaction with other agents, optimizes what goes into the context window, and runs the feedback loops that make an agent feel coherent over time. When an agent seems to "remember" something from earlier, that's the harness at work — it's retrieving a record from storage and injecting it into the next prompt. The LLM didn't retain anything; the harness did.
+
+This is something I've spent a lot of time on with [Rockbot](https://rockbot.dev), an agent designed to learn from its own experience — improving its memory and refining its skills as it interacts with its environment. The interesting thing about building something like that is how much of what feels like "learning" or "growth" is really the harness getting better at what it stores, what it retrieves, and how it applies past experience to new situations. The LLM underneath is unchanged. The apparent intelligence grows in the scaffolding.
 
 **The Directive or Goal** is the system prompt, the persona definition, the set of instructions that give the agent its apparent personality. This is what makes one agent feel like a helpful assistant and another feel like a relentless optimizer. It's the closest thing in the system to a "soul" — and it's a text file.
 
