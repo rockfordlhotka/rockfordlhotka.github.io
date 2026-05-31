@@ -21,6 +21,8 @@ Vague prompts produce vague results. "Make the login page better" isn't a spec. 
 
 What works is investing time upfront — with the agent, with teammates, with stakeholders — to define success. A spec doesn't need to be a formal document. It can be a set of acceptance criteria, a failing test, a user story with clear done conditions, or even a detailed conversation that gets recorded as a markdown file in the repo. What matters is that both the agent and the developer have a shared, explicit definition of what "done" means.
 
+And "done" should include more than functional behavior. If performance, memory usage, bandwidth, startup time, or cost matter, put those in the spec as explicit targets. If they aren't specified, they won't be enforced.
+
 That definition is what the inner loop runs against. Without it, you can't close the loop at all.
 
 ## The Inner Loop
@@ -34,7 +36,9 @@ Once the spec exists, the agent's job is to implement against it and then _verif
 5. Check logs and telemetry.
 6. If it worked, done. If not, understand why and go back to step 1.
 
-For a human developer, this loop takes time at every step — context-switching, reading output, reasoning about what went wrong. For a coding agent, steps 2 through 5 can be nearly instantaneous if the right infrastructure is in place. The agent doesn't get bored, doesn't lose context, and can iterate through this loop far faster than any human.
+"Worked" here means meeting both functional and technical goals. Passing tests while regressing latency or memory is still a failed iteration.
+
+For a human developer, this loop takes time at every step — context-switching, reading output, reasoning about what went wrong. For a coding agent, steps 2 through 5 happen at a different scale if the right infrastructure is in place: not instantaneous, but often orders of magnitude faster than a human can execute the same cycle. The agent doesn't get bored, doesn't lose context, and can iterate through this loop far faster than any human.
 
 The bottleneck isn't the LLM's ability to reason. It's whether the agent has the _tools_ to run the loop at all.
 
@@ -42,19 +46,35 @@ The bottleneck isn't the LLM's ability to reason. It's whether the agent has the
 
 Three things make the inner loop possible for an agent:
 
-**A CLI interface.** The agent needs to be able to trigger behavior from the command line. If the only way to test a feature is to click through a UI, the agent is stuck. A CLI that exercises the same code paths as the UI — seeding data, triggering workflows, querying state — gives the agent a programmable handle on the system. This is worth building deliberately, not as an afterthought.
+**A programmable interface (CLI preferred).** The agent needs a reliable way to trigger behavior. That can be through a direct CLI, an API, or automated UI flows (for example via Playwright). If the only option is ad hoc manual clicking, the agent is stuck. A direct CLI that exercises the same code paths as the UI — seeding data, triggering workflows, querying state — is still the preferred technique because it is usually faster, less brittle, and easier to iterate against. This is worth building deliberately, not as an afterthought.
 
 **Logs.** Structured, readable logs that tell the agent what actually happened when it ran something. Not just "error occurred" but the full context: what was called, what failed, what state the system was in. If the agent can't read the output of its own tests and understand why something failed, it has to guess — and guessing wastes iterations.
 
-**OTEL and observability.** For distributed systems especially, logs from one service aren't enough. OpenTelemetry traces that span service boundaries let the agent follow a request end-to-end and identify _where_ things went wrong, not just _that_ they went wrong. An agent with access to traces can diagnose integration failures that would take a human developer significant time to even reproduce.
+**OpenTelemetry (OTEL) and observability.** For distributed systems especially, logs from one service aren't enough. OpenTelemetry traces that span service boundaries let the agent follow a request end-to-end and identify _where_ things went wrong, not just _that_ they went wrong. An agent with access to traces can diagnose integration failures that would take a human developer significant time to even reproduce.
 
-These three things — CLI, logs, OTEL — are the difference between an agent that can close its own loop and one that has to stop and ask a human every time it needs to know if something worked.
+These three things — a programmable execution surface (ideally CLI), logs, and OpenTelemetry — are the difference between an agent that can close its own loop and one that has to stop and ask a human every time it needs to know if something worked.
+
+## Make This Real in .NET
+
+If you're building on .NET, this is very practical today.
+
+**Use structured logging with Serilog.** Wire Serilog into your host so every operation emits consistent, queryable events. Include correlation IDs, request IDs, and key domain identifiers in log scopes so an agent can pivot from a failing test to the exact execution path. Console output is useful, but shipping logs to a central sink (Seq, ELK, Azure Monitor, etc.) is what makes iterative diagnosis fast.
+
+**Add OpenTelemetry with the Microsoft packages.** Start with a small, explicit NuGet set such as `OpenTelemetry.Extensions.Hosting`, `OpenTelemetry.Instrumentation.AspNetCore`, `OpenTelemetry.Instrumentation.Http`, and `OpenTelemetry.Instrumentation.SqlClient`, plus a Microsoft exporter package like `Azure.Monitor.OpenTelemetry.AspNetCore` when you're in Azure. This gives you traces, metrics, and logs through the same hosting model as the rest of your app. Instrument ASP.NET Core, HttpClient, and data access paths, then export to your OpenTelemetry backend. When a test fails, the agent should be able to inspect a trace and immediately see cross-service latency, retries, and failure boundaries.
+
+**Run agent-safe workloads in containers.** Put the app and dependencies in Docker (or Kubernetes) so the agent can spin up a disposable environment, run the inner loop, and tear it down without touching shared "real" systems. In Kubernetes, this can be a dev namespace with short-lived pods and strict resource limits. In Docker, it can be a compose stack with ephemeral volumes and test credentials.
+
+**Guard real systems by default.** Give the agent non-production endpoints, test identities, and least-privilege access. Route outbound dependencies to mocks, sandboxes, or seeded test data where possible. The goal is simple: let the agent iterate aggressively, while making it hard to break anything that matters.
+
+This is how you make the inner loop repeatable: deterministic startup, observable execution, disposable runtime, and safe boundaries.
 
 ## Iterations Are Normal
 
 Even with all of this in place, the agent probably won't get it right on the first try. That's fine. That's expected. Human developers don't get it right the first time either — the difference is that a developer might spend thirty minutes reading a stack trace and reasoning about a fix before trying again. An agent with good observability can do the same analysis in seconds.
 
 The value isn't that the agent is smarter. It's that the feedback loop is so much tighter. A human developer running five iterations across a workday is doing well. An agent running five iterations in fifteen minutes — because it can build, test, observe, and adjust without leaving the terminal — is a qualitatively different kind of productivity.
+
+This also addresses a common objection: "agents are fine for toy features, but not for real engineering constraints." That's only true if we let the agent optimize for correctness alone. If you require it to meet performance, memory, bandwidth, and reliability targets in the same loop, those become enforceable gates just like unit and integration tests.
 
 ## The Human Outer Loop
 
