@@ -11,123 +11,127 @@ image: /assets/2026-09-18-SSH-Is-Not-A-Desktop/featured-image.png
 
 ![SSH Is Not a Desktop](/assets/2026-09-18-SSH-Is-Not-A-Desktop/featured-image.png)
 
-I do most of my work across three physical PCs. Two of them (I'll call them `devbox1` and `devbox2`) are beefy machines that sit in my office running all the time. The third is my laptop, which goes where I go.
+I work across three physical PCs. Two of them (I'll call them `devbox1` and `devbox2`) are powerful desktop machines that sit in my office and run all the time. The third is my laptop, which goes with me when I travel.
 
-Most of my development work these days is done through Claude Code. When I'm away from my office, I don't really want Claude running on the laptop. I want it running on the always-on machines, with the laptop acting as a window into Claude Code running over there.
+These days most of my development work is done through Claude Code. When I'm away from the office, I really don't want to run Claude Code on my laptop. I want it running on one of the desktop machines, and I want the laptop to just be a way to talk to it.
 
-## Why remote in at all?
+This is the first in a series of posts about how I've approached that problem. I started with SSH, which is what this post is about.
 
-There are two reasons I'd rather not run Claude Code directly on my laptop.
+## Why Remote In at All?
 
-**The laptop doesn't have everything.** My desktop machines have the full toolchain installed and configured: Docker, kubectl and access to my Kubernetes cluster, multiple .NET SDKs, database tools, and all my repos checked out at the same paths. Claude Code is only as capable as the tools it can reach. On the laptop, some of those tools are missing and others aren't configured, so the agent ends up blocked or improvising. I could try to keep the laptop in sync with the desktops, but that's a lot of ongoing work for a machine that's mostly meant to be light and portable.
+You might wonder why I don't just run Claude Code on the laptop. There are two reasons.
 
-**Claude Code uses a lot of bandwidth.** People don't expect this one. Every turn of a Claude Code conversation sends the context (the conversation so far, the file contents it has read, tool output, and so on) up to the model, and streams the response back. In a long session working on a real codebase, that adds up to a lot of data, and much of it is _upload_, which is usually the weakest part of any connection. On airplane Wi-Fi or a congested hotel network, running Claude locally can go from sluggish to unusable.
+First, my laptop doesn't have all my tools. The desktop machines have everything installed and configured: Docker, kubectl with access to my Kubernetes cluster, multiple .NET SDKs, database tools, and all my repos checked out at the same paths. Claude Code can only use the tools that exist on the machine where it is running. On the laptop some of those tools are missing, or aren't configured, and Claude ends up stuck or trying to work around what it doesn't have. I _could_ try to keep the laptop in sync with the desktops, but that is a lot of ongoing work for a machine that I want to keep light and simple.
 
-An SSH session, on the other hand, only sends keystrokes and terminal text. When Claude runs on my desktop, all the heavy traffic goes over my office's fast, stable connection, and the only thing crossing the hotel Wi-Fi is what's on my screen. The same bad network that makes local Claude Code unusable works fine for a remote terminal.
+Second, and this one surprised me a bit, Claude Code uses a lot of bandwidth. Every time you interact with Claude, it sends the context (the conversation so far, files it has read, output from tools, and so on) up to the model, and then streams the response back. In a long session working on a real codebase that adds up to a lot of data - and a lot of it is _upload_, which is usually the weakest part of any network connection.
 
-So the plan was simple. Windows has shipped an OpenSSH server for years, and from my laptop it's one command to get a shell on either box: `ssh devbox1`, `cd` into a repo, run `claude`, and get to work.
+> ℹ️ I travel quite a bit, and airplane wifi and hotel wifi are often terrible. Running Claude Code locally on a bad connection goes from slow to basically unusable.
 
-It mostly works. But "mostly" hides four problems that have cost me a surprising amount of time. The short version is that an SSH session is _not_ a desktop session, and both Claude Code and the tools it relies on (especially `git`, `gh`, and Docker) quietly assume they're running in one.
+An SSH session, on the other hand, only sends keystrokes and terminal text back and forth. If Claude is running on my desktop machine, all the heavy traffic goes over my office internet connection, and the only thing going over the hotel wifi is what's on my screen. That's a _much_ better experience.
 
-## Problem 1: Closing the client kills the work
+So the plan was simple. Windows has had an OpenSSH server for years, and from my laptop it is one command to get a shell on either desktop machine. `ssh devbox1`, `cd` into a repo, run `claude`, and get to work.
 
-The first thing that bit me: if I close the terminal on my laptop, or the laptop goes to sleep, or the Wi-Fi hiccups, whatever I was running on the remote machine dies with it.
+That mostly works. But I've run into four problems that have cost me a lot more time than I expected. The common thread is that an SSH session is _not_ the same as being logged into the desktop, and Claude Code (and the tools it uses, like `git`, `gh`, and Docker) often assume that it is.
 
-That's actually reasonable behavior from the SSH server's point of view. On Windows, the OpenSSH server runs everything spawned by a session inside a job object, and when the session ends the job is torn down, along with every process in it. Backgrounding things doesn't help, and neither does `Start-Process`. If a process was born inside that SSH session, it dies with it.
+## Problem 1: Disconnecting Kills Claude
 
-For a quick `git status` that's fine. For a Claude Code session that's twenty minutes into a refactor, it's painful. The agent is killed mid-thought, and any in-flight work is left however it happened to be when the connection dropped.
+The first problem I hit is that if I close the terminal on my laptop, or the laptop goes to sleep, or the wifi drops, whatever I was running on the remote machine dies.
 
-On Linux the standard answer is `tmux` or `screen`: run your work inside a terminal multiplexer that lives independently of the SSH connection, and reattach later. Windows doesn't have a native equivalent. You can get there through WSL, but a lot of my work is Windows-native (.NET, PowerShell, Windows paths), so that's only a partial answer.
+From the SSH server's perspective this is reasonable behavior. On Windows, the OpenSSH server runs everything started in a session inside a Windows job object, and when the session ends the job is torn down - along with every process in it. Running something in the background doesn't help, and neither does `Start-Process`. If the process was started from that SSH session, it dies when the session ends.
 
-Claude Code's session history helps. After reconnecting, I can run `claude --resume` and pick up the conversation, but that only restores the conversation. Whatever Claude was doing when the connection dropped (a build, a test run, a half-applied set of edits) was interrupted, and I have to work out where things stand before carrying on. On a flaky connection, where the whole point is that the network is unreliable, that happens often.
+For a quick `git status` that's no big deal. For a Claude Code session that's 20 minutes into a refactor, it is painful. Claude is killed in the middle of whatever it was doing, and the code is left in whatever state it happened to be in when the connection dropped.
 
-This turned out to be the problem that pushed me beyond plain SSH. The real fix is to have Claude Code running somewhere that doesn't depend on my connection at all, and just _attach_ to it from wherever I am. That's the subject of the next couple of posts. For this post, the lesson is that SSH works well for short, disposable commands, but it's a poor place to start anything long-lived.
+On Linux the answer to this is `tmux` or `screen`, which let you run things inside a terminal session that isn't tied to your SSH connection, so you can reconnect later. Windows doesn't really have an equivalent. You can use WSL to get there, but a lot of my work is Windows-specific (.NET, PowerShell, Windows paths), so that's only a partial answer.
 
-## Problem 2: Git and gh need different authentication
+Claude Code does help a little. After reconnecting, I can run `claude --resume` and pick up the conversation. But that only restores the _conversation_. If Claude was in the middle of a build, or a test run, or halfway through a set of edits, that work was interrupted, and I have to figure out where things were before I can continue. And because the whole reason I'm doing this is a bad network connection, this happens a lot.
 
-The second problem showed up the first time an agent tried to push a branch.
+This is the problem that eventually pushed me beyond plain SSH, and I'll write about that in future posts.
 
-On a normal Windows dev box, Git is configured to use Git Credential Manager (GCM). GCM is great: it pops up a browser or a dialog, you sign in to GitHub, and it caches a token so you never think about it again.
+## Problem 2: Git and gh Need Different Authentication
 
-The phrase "pops up" is the problem. In an SSH session there is nothing to pop up _on_. GCM needs either a GUI or an interactive terminal it can prompt through, and when it has neither it fails with the uninformative:
+The second problem showed up the first time Claude tried to push a branch to GitHub.
 
-```
+On a normal Windows dev machine, Git is set up to use Git Credential Manager (GCM). GCM works great. It pops up a browser or dialog, you sign into GitHub, and it caches a token so you never have to think about it again.
+
+The thing is, in an SSH session there is nothing to pop up _on_. GCM needs either a GUI or an interactive terminal to prompt you, and when it has neither you get this very unhelpful error:
+
+```text
 unable to read askpass response
 could not read Username for 'https://github.com'
 ```
 
-This applies to Claude Code's own shell tool too, because the commands an agent runs are non-interactive by nature. So the credential setup that works perfectly when I'm sitting at the machine fails as soon as the work is driven remotely or by an agent.
+This also applies to the commands Claude Code runs, because those aren't interactive either. So a credential setup that works perfectly when I'm sitting at the machine fails when I'm connected over SSH.
 
-The fix was to stop using HTTPS credentials for Git on these machines entirely and switch to SSH keys for GitHub:
+My solution was to stop using HTTPS for Git on these machines and switch to SSH keys for GitHub:
 
-- A dedicated GitHub key, `~/.ssh/id_ed25519_github`, with **no passphrase**. That's deliberate. A passphrase means `ssh-agent`, and an agent started in my desktop session isn't reachable from an SSH login, so you end up with exactly the same kind of failure, just in a different spot.
-- An entry in `~/.ssh/config` that scopes that key to `github.com` with `IdentitiesOnly yes`. Without that, ssh helpfully offers my _other_ key first (the one I use to remote between machines). GitHub rejects it, and after enough rejected keys you get "Too many authentication failures" and nothing works.
-- A global URL rewrite so every repo uses SSH, regardless of how it was cloned:
+1. Create a dedicated GitHub key, `~/.ssh/id_ed25519_github`, with _no passphrase_. That's on purpose. A passphrase means using `ssh-agent`, and an agent started in my desktop session isn't available to an SSH login - which gets you right back to the same kind of failure.
+2. Add an entry to `~/.ssh/config` that ties that key to `github.com` with `IdentitiesOnly yes`. Without that, ssh tries my _other_ key first (the one I use to connect between my machines). GitHub rejects it, and after enough rejected keys you get "Too many authentication failures" and nothing works.
+3. Set up a global URL rewrite so every repo uses SSH, no matter how it was cloned:
 
 ```bash
 git config --global url."git@github.com:".insteadOf "https://github.com/"
 ```
 
-One gotcha with that last one: `git remote -v` still _shows_ the https URL, because the rewrite happens when git actually talks to the remote. If you want to see what's really going to be used, `git ls-remote --get-url <url>` tells the truth.
+> ⚠️ One gotcha with that last step: `git remote -v` still _shows_ the https URL, because the rewrite happens when git actually talks to GitHub. If you want to see what's really going to be used, run `git ls-remote --get-url <url>`.
 
-The `gh` CLI is a separate story, because it doesn't use Git's credentials at all. It stores its own token, and by default it puts that in the OS credential store. That works well at the desktop, but it's another piece of state that belongs to the interactive session, and I've had `gh` report that its token is invalid in situations where it had been working fine moments before at the console. If that's a problem for you, `gh auth login --insecure-storage` writes the token to a plain file (`%APPDATA%\GitHub CLI\hosts.yml`) that any shell can read. As the flag name suggests, that's a tradeoff, and you should think about it before taking it.
+The `gh` CLI is a separate story, because it doesn't use Git's credentials at all. It stores its own token, and by default it puts that token in the Windows credential store. That works fine at the desktop, but I've had `gh` tell me its token is invalid over SSH when it was working fine at the console. If you run into that, `gh auth login --insecure-storage` writes the token to a plain file (`%APPDATA%\GitHub CLI\hosts.yml`) that any shell can read. As the name of the flag implies, that is a security tradeoff, so think about it before you do it.
 
-It's also worth knowing that the GitHub MCP server authenticates on its own path, independent of both Git and `gh`. During one stretch where `gh` was broken over SSH, the agent could still read issues and open PRs through MCP, which kept me productive while I sorted out the CLI.
+It is also worth knowing that the GitHub MCP server authenticates separately from both Git and `gh`. At one point when `gh` wasn't working over SSH, Claude could still read issues and create PRs through the MCP server, which kept me going while I sorted out the CLI.
 
-## Problem 3: Reboots leave things half-started
+## Problem 3: Reboots Leave Things Half-Started
 
-These machines are "always on" until they aren't. Patch Tuesday comes around, Windows Update decides it's time to reboot overnight, and the machine comes back up to the login screen with nobody logged in.
+My desktop machines are "always on" - until they aren't. Patch Tuesday comes around, Windows Update decides to reboot overnight, and the machine comes back up sitting at the login screen with nobody logged in.
 
-The OpenSSH server is fine with that, because it runs as a Windows service, so I can still connect and start Claude. But a lot of what Claude needs to do real work isn't built that way. Docker Desktop is the big one. Despite the Windows services it installs, Docker Desktop is really a per-user application that starts when you log in to the desktop. No interactive logon, no Docker. The same is true of anything else that starts from a Startup folder or a "run at login" setting, such as tray apps, VPN clients, and sync tools.
+The OpenSSH server runs as a Windows service, so I can still connect and start Claude. But a lot of what Claude needs to do real work doesn't start until someone logs in. Docker Desktop is the big one. Even though it installs some Windows services, Docker Desktop is really a per-user app that starts when you log into the desktop. No login, no Docker. The same is true for anything else that starts from the Startup folder or a "run at login" setting.
 
-From an SSH session, the result is confusing. I connect, start Claude, and everything looks normal until the agent tries to build a container or run the tests that depend on one. Then it fails with an error saying it can't connect to the Docker engine. Claude will sometimes cheerfully try to "fix" that by digging through Docker's configuration, when the real problem is just that nobody has logged in since the reboot.
+From an SSH session this is confusing. I connect, start Claude, and everything seems normal until Claude tries to build a container or run tests that need one. Then it fails with an error saying it can't connect to the Docker engine.
 
-And you can't really fix it from SSH. Starting Docker Desktop from an SSH session either doesn't work or starts it inside the SSH session's job, where it dies as soon as I disconnect (see Problem 1). The practical fix is to open a GUI remote session, log in so the normal startup apps run, wait for Docker to report that it's ready, and then go back to SSH and Claude.
+And I can't really fix it from SSH. Starting Docker Desktop from an SSH session either doesn't work, or it starts inside the SSH session's job and dies when I disconnect (see Problem 1). What I end up doing is connecting with a GUI remote desktop tool, logging in so all the normal startup apps run, waiting for Docker to be ready, and then going back to SSH and Claude.
 
-I've mostly learned to check for this first after any patch Tuesday. Setting a machine to log in automatically would solve it, but that means leaving a logged-in desktop sitting there, which is a security tradeoff I'm not keen on.
+> ℹ️ I could set the machines to log in automatically, and that would solve this problem. But that means leaving a logged-in desktop sitting there, and I'd rather not do that.
 
-## Problem 4: Sometimes you just need the GUI
+## Problem 4: Sometimes You Just Need the GUI
 
-This is the one I find the most frustrating, because it undercuts the whole point.
+This is the one I find most frustrating, because it kind of defeats the purpose of using SSH in the first place.
 
-A lot of authentication and troubleshooting on Windows simply assumes someone is sitting at the console:
+A lot of authentication and troubleshooting on Windows assumes someone is sitting at the machine:
 
-- Signing in to GitHub (or Azure, or Claude) for the first time usually means a browser-based OAuth flow.
-- Windows Hello, UAC prompts, and "allow this app?" dialogs appear on the physical desktop, not in my SSH terminal.
-- Credential stores are often tied to the interactive logon session, so a token you set up at the desktop may not be usable from an SSH session, and vice versa.
-- After a reboot, services like Docker Desktop don't start until someone logs in to the desktop.
-- When something fails over SSH, the most useful diagnostic step is often "does it work when I'm actually logged in?", which you can't answer from SSH.
+* Signing into GitHub (or Azure, or Claude) for the first time usually means a browser-based login
+* Windows Hello, UAC prompts, and "allow this app?" dialogs show up on the physical desktop, not in my SSH terminal
+* Credential stores are often tied to the interactive login session, so a token you set up at the desktop may not work from SSH, and vice versa
+* After a reboot, apps like Docker Desktop don't start until someone logs in
+* When something fails over SSH, the most useful question is often "does it work when I'm actually logged in?" - and you can't answer that from SSH
 
-So in practice, making the SSH workflow work, and fixing it when it breaks, often means opening a GUI remote session to the _same_ machine using AnyDesk or RustDesk. I sign in to the desktop, complete the browser login or approve the prompt, confirm that the tool works interactively, and then go back to SSH to see whether it works there too.
+So in practice, getting SSH to work, and fixing it when it breaks, often means using [AnyDesk](https://anydesk.com) or [RustDesk](https://rustdesk.com) to connect to the _same_ machine with a GUI. I log into the desktop, complete the browser login or click through the prompt, make sure the tool works there, and then go back to SSH to see if it works there too.
 
-It works, but it's clunky. I'm using a GUI remote desktop tool to fix problems in my headless remote shell. And it only works because both machines stay logged in to a desktop session (or I'm willing to log in remotely), which is precisely the dependency I was trying to get rid of.
+It works, but it is clunky. I'm using a GUI remote desktop tool to fix problems with my command line remote session!
 
-The long-term answer is the same pattern as the Git fix: find the credential path for each tool that doesn't depend on an interactive session, and set it up once while you're at the GUI. Plain SSH keys instead of GCM. File-based tokens where the risk is acceptable. Services that start at boot rather than at login. Every tool I move to that kind of path is one less reason to reach for AnyDesk.
+Over time, my approach has been the same as with the Git problem. For each tool, find a way to authenticate that doesn't depend on being logged into the desktop, and set it up once while I'm at the GUI. SSH keys instead of GCM. File-based tokens where the risk is acceptable. Services that start at boot instead of at login. Every tool I move over is one less reason to fire up AnyDesk.
 
-## A productivity tip: review through a branch
+## A Productivity Tip: Review Changes Through a Branch
 
-One more thing, and this applies however you reach the remote Claude, whether over SSH or any of the options I'll cover in future posts.
+This isn't really a problem, but it is something I've found very helpful, and it applies no matter how you connect to Claude on another machine.
 
-When Claude is running on another machine, the changes it makes live on that machine too. Reviewing them from a terminal (scrolling through `git diff` over a slow SSH connection) works, but it's not a great experience, especially for anything larger than a few lines.
+When Claude is running on a different machine, the changes it makes are on that machine too. You can review them by scrolling through `git diff` in the terminal, but over a slow connection that's not a great experience - especially for anything bigger than a few lines.
 
-So I have Claude do its work in a git branch and push that branch to GitHub, usually with a pull request. Then I review the changes on my laptop the way I'd review anyone else's: in the browser, with GitHub's diff view, where I can comment on specific lines. If I want to run or debug the code locally, I can pull the branch down onto the laptop, since it's just a branch.
+So I have Claude do its work in a git branch and push that branch to GitHub, usually with a pull request. Then I can review the changes on my laptop the same way I'd review anyone else's code, in the browser using GitHub's diff view. If I want to run or debug the code locally, I can pull the branch down to the laptop.
 
-This post is an example. Claude drafted it on `devbox1` while I was talking to it from my laptop. When I wanted to actually read the draft, I asked Claude to create a PR, and I read it from the laptop on GitHub. Any comments I had went back to Claude to address, and the next push updated the same PR.
+This post is an example! Claude helped me draft it on `devbox1` while I was working from my laptop. When I wanted to read the draft, I asked Claude to create a PR, and I read it on GitHub from my laptop. My feedback went back to Claude, and each change it pushed updated the same PR.
 
-It also takes care of a quieter risk. Work that lives only on the remote machine isn't backed up anywhere until it's pushed. If the session dies or the machine gets rebooted, a pushed branch means nothing is lost.
+This also has another benefit. Work that only exists on the remote machine isn't backed up anywhere until it's pushed. If the session dies or the machine reboots, having a pushed branch means nothing is lost.
 
-## Lessons
+## Conclusion
 
-If you're thinking about SSHing into a Windows workstation so you can run Claude Code there, here's what I'd pass along:
+If you are thinking about using SSH to connect to a Windows machine so you can run Claude Code there, here's what I've learned:
 
-1. **Expect disconnects to kill your session.** On Windows, anything started in an SSH session dies when the session does, and a Claude Code session is no exception. `claude --resume` brings back the conversation, but not the interrupted work.
-2. **Assume nothing can prompt.** Any credential flow that pops up a dialog, opens a browser, or asks for a passphrase is going to fail over SSH and inside agent shells. Pick non-interactive credentials on purpose.
-3. **Know what needs a logon.** After a reboot, anything that starts at desktop login (Docker Desktop above all) won't be running. When Claude hits a strange failure after patch Tuesday, check that first.
-4. **Keep a GUI path available.** You'll still need a real desktop session now and then, for first-time sign-ins, for getting startup apps running after a reboot, and for "does this even work locally?" troubleshooting. Have AnyDesk, RustDesk, or RDP set up before you need it, not after.
-5. **Review through a branch.** Have Claude push its work to a branch (ideally with a PR) so you can review it comfortably from wherever you are, and so the work is safe off the remote machine.
+1. Disconnecting will kill your Claude session. On Windows anything started in an SSH session dies when the session ends. `claude --resume` brings back the conversation, but not the work that was interrupted.
+2. Nothing can prompt you for credentials. Any login that pops up a dialog, opens a browser, or asks for a passphrase will fail over SSH. Set up credentials that don't need to prompt.
+3. Know what needs a desktop login. After a reboot, anything that starts at login (like Docker Desktop) won't be running. If Claude hits a strange error after Patch Tuesday, check that first.
+4. Keep a GUI option available. You'll still need a real desktop session now and then, so have AnyDesk, RustDesk, or RDP set up _before_ you need it.
+5. Review changes through a branch. Have Claude push its work to GitHub so you can review it from anywhere, and so the work isn't only on the remote machine.
 
-All of this is worth the effort. Running Claude Code on a well-equipped desktop and reaching it over a thin SSH connection means I get my full toolchain from anywhere, and a bad airplane connection is only a nuisance instead of a showstopper.
+None of these problems are hard once you understand them. What makes them hard is that the error messages almost never say "this is failing because nobody is logged into the desktop." Once I started asking "is this running in a desktop session or not?" as my first troubleshooting question, most of the mystery went away.
 
-None of these problems is hard once you understand them. What makes them hard is that the failure messages almost never say "this is failing because there's no desktop session." Once I started treating "is this running in an interactive session or not?" as the first question to ask, most of the mystery went away.
+Even with these issues, running Claude Code on a well-equipped desktop machine and connecting over SSH is worth it. I get all my tools from anywhere, and a bad airplane connection is annoying instead of a showstopper.
 
-SSH was my first step, not my last. Problems 2 through 4 apply no matter how you reach the machine. Problem 1, though, is specific to SSH, and it's the one that bothered me the most. In the next post I'll look at Claude Code's Remote Control feature, which keeps the session running on the desktop and lets me attach from my laptop, a browser, or my phone. After that, I'll cover going a step further and running a Remote Control _server_ that's always there, even when nobody is logged in.
+SSH was my first step though, not my last. In my next post I'll talk about Claude Code's Remote Control feature, which keeps the session running on the desktop machine and lets me connect to it from my laptop, a browser, or my phone. After that I'll talk about going a step further and running a Remote Control _server_ that's always available, even when nobody is logged in.
