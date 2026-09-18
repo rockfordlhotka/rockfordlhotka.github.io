@@ -104,6 +104,18 @@ It works, but it's clunky. I'm using a GUI remote desktop tool to fix problems i
 
 The long-term answer is the same pattern as the Git fix: find the credential path for each tool that doesn't depend on an interactive session, and set it up once while you're at the GUI. Plain SSH keys instead of GCM. File-based tokens where the risk is acceptable. Services that start at boot rather than at login. Every tool I move to that kind of path is one less reason to reach for AnyDesk.
 
+## A productivity tip: review through a branch
+
+One more thing, and this applies however you reach the remote Claude, whether over SSH or any of the options I'll cover in future posts.
+
+When Claude is running on another machine, the changes it makes live on that machine too. Reviewing them from a terminal (scrolling through `git diff` over a slow SSH connection) works, but it's not a great experience, especially for anything larger than a few lines.
+
+So I have Claude do its work in a git branch and push that branch to GitHub, usually with a pull request. Then I review the changes on my laptop the way I'd review anyone else's: in the browser, with GitHub's diff view, where I can comment on specific lines. If I want to run or debug the code locally, I can pull the branch down onto the laptop, since it's just a branch.
+
+This post is an example. Claude drafted it on RockyDesktop while I was talking to it from my laptop. When I wanted to actually read the draft, I asked Claude to create a PR, and I read it from the laptop on GitHub. Any comments I had went back to Claude to address, and the next push updated the same PR.
+
+It also takes care of a quieter risk. Work that lives only on the remote machine isn't backed up anywhere until it's pushed. If the session dies or the machine gets rebooted, a pushed branch means nothing is lost.
+
 ## Lessons
 
 If you're thinking about SSHing into a Windows workstation so you can run Claude Code there, here's what I'd pass along:
@@ -112,6 +124,7 @@ If you're thinking about SSHing into a Windows workstation so you can run Claude
 2. **Assume nothing can prompt.** Any credential flow that pops up a dialog, opens a browser, or asks for a passphrase is going to fail over SSH and inside agent shells. Pick non-interactive credentials on purpose.
 3. **Know what needs a logon.** After a reboot, anything that starts at desktop login (Docker Desktop above all) won't be running. When Claude hits a strange failure after patch Tuesday, check that first.
 4. **Keep a GUI path available.** You'll still need a real desktop session now and then, for first-time sign-ins, for getting startup apps running after a reboot, and for "does this even work locally?" troubleshooting. Have AnyDesk, RustDesk, or RDP set up before you need it, not after.
+5. **Review through a branch.** Have Claude push its work to a branch (ideally with a PR) so you can review it comfortably from wherever you are, and so the work is safe off the remote machine.
 
 All of this is worth the effort. Running Claude Code on a well-equipped desktop and reaching it over a thin SSH connection means I get my full toolchain from anywhere, and a bad airplane connection is only a nuisance instead of a showstopper.
 
