@@ -11,7 +11,7 @@ image: /assets/2026-09-18-SSH-Is-Not-A-Desktop/featured-image.png
 
 ![SSH Is Not a Desktop](/assets/2026-09-18-SSH-Is-Not-A-Desktop/featured-image.png)
 
-I do most of my work across three physical PCs. Two of them, RockyDesktop and rockymini, are beefy machines that sit in my office running all the time. The third is my laptop, which goes where I go.
+I do most of my work across three physical PCs. Two of them (I'll call them `devbox1` and `devbox2`) are beefy machines that sit in my office running all the time. The third is my laptop, which goes where I go.
 
 Most of my development work these days is done through Claude Code. When I'm away from my office, I don't really want Claude running on the laptop. I want it running on the always-on machines, with the laptop acting as a window into Claude Code running over there.
 
@@ -25,7 +25,7 @@ There are two reasons I'd rather not run Claude Code directly on my laptop.
 
 An SSH session, on the other hand, only sends keystrokes and terminal text. When Claude runs on my desktop, all the heavy traffic goes over my office's fast, stable connection, and the only thing crossing the hotel Wi-Fi is what's on my screen. The same bad network that makes local Claude Code unusable works fine for a remote terminal.
 
-So the plan was simple. Windows has shipped an OpenSSH server for years, and from my laptop it's one command to get a shell on either box: `ssh rockydesktop`, `cd` into a repo, run `claude`, and get to work.
+So the plan was simple. Windows has shipped an OpenSSH server for years, and from my laptop it's one command to get a shell on either box: `ssh devbox1`, `cd` into a repo, run `claude`, and get to work.
 
 It mostly works. But "mostly" hides four problems that have cost me a surprising amount of time. The short version is that an SSH session is _not_ a desktop session, and both Claude Code and the tools it relies on (especially `git`, `gh`, and Docker) quietly assume they're running in one.
 
@@ -112,7 +112,7 @@ When Claude is running on another machine, the changes it makes live on that mac
 
 So I have Claude do its work in a git branch and push that branch to GitHub, usually with a pull request. Then I review the changes on my laptop the way I'd review anyone else's: in the browser, with GitHub's diff view, where I can comment on specific lines. If I want to run or debug the code locally, I can pull the branch down onto the laptop, since it's just a branch.
 
-This post is an example. Claude drafted it on RockyDesktop while I was talking to it from my laptop. When I wanted to actually read the draft, I asked Claude to create a PR, and I read it from the laptop on GitHub. Any comments I had went back to Claude to address, and the next push updated the same PR.
+This post is an example. Claude drafted it on `devbox1` while I was talking to it from my laptop. When I wanted to actually read the draft, I asked Claude to create a PR, and I read it from the laptop on GitHub. Any comments I had went back to Claude to address, and the next push updated the same PR.
 
 It also takes care of a quieter risk. Work that lives only on the remote machine isn't backed up anywhere until it's pushed. If the session dies or the machine gets rebooted, a pushed branch means nothing is lost.
 
