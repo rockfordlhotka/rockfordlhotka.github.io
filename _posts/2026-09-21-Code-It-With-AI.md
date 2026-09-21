@@ -28,7 +28,9 @@ Carl welcomed me as his new co-host in Episode 39, and since then we've covered 
 * **[Episode 41: Claude Utils](https://youtu.be/qKskFmV0_1w)** - My utilities for syncing Claude memories across PCs using GitHub, which I also wrote about in [Syncing Claude Memory Across Workstations](https://blog.lhotka.net/2026/05/08/Claude-Memory-Sync).
 * **[Episode 42: Claude, Lovable, and ACE](https://youtu.be/5JQLdet1Lf8)** - Building web apps with Lovable, Claude Code, and Xebia ACE, the pros and cons of each, and how they can be used together.
 * **[Episode 43: Qwen 3.8 Evaluation](https://youtu.be/VN92_Lvh44A)** - Carl and I put the latest Qwen model to the test using Ollama and the GitHub Copilot CLI.
-* **[Episode 46: Remote Control](https://youtu.be/9-ZuCuKoiD4)** - Accessing your GitHub Copilot and Claude Code sessions remotely. This is the same topic as my recent posts [SSH Is Not a Desktop](https://blog.lhotka.net/2026/09/18/SSH-Is-Not-A-Desktop) and [Claude Code Remote Control Server](https://blog.lhotka.net/2026/09/21/Remote-Control-Server).
+* **[Episode 46: Remote Control](https://youtu.be/9-ZuCuKoiD4)** - Accessing your GitHub Copilot sessions remotely.
+
+Our next episode (not released yet) covers the Claude Code side of remote control, based on my recent posts [SSH Is Not a Desktop](https://blog.lhotka.net/2026/09/18/SSH-Is-Not-A-Desktop) and [Claude Code Remote Control Server](https://blog.lhotka.net/2026/09/21/Remote-Control-Server).
 
 The earlier episodes with Carl and Jeff are worth a look too. They cover a lot of GitHub Copilot features, skills, agents, local models, and more.
 
