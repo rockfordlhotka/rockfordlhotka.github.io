@@ -134,4 +134,6 @@ None of these problems are hard once you understand them. What makes them hard i
 
 Even with these issues, running Claude Code on a well-equipped desktop machine and connecting over SSH is worth it. I get all my tools from anywhere, and a bad airplane connection is annoying instead of a showstopper.
 
-SSH was my first step though, not my last. In my next post I'll talk about Claude Code's Remote Control feature, which keeps the session running on the desktop machine and lets me connect to it from my laptop, a browser, or my phone. After that I'll talk about going a step further and running a Remote Control _server_ that's always available, even when nobody is logged in.
+SSH was my first step though, not my last. In [my next post](https://blog.lhotka.net/2026/09/21/Remote-Control-Server) I talk about Claude Code's Remote Control feature, which keeps the session running on the desktop machine and lets me connect to it from my laptop, a browser, or my phone, and then about going a step further and running a Remote Control _server_ that's always available, even when nobody is logged in.
+
+_This post was authored with the assistance of AI._
