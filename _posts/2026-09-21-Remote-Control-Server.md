@@ -126,9 +126,9 @@ There are two operational details worth knowing if you run a server like this fo
 
 First, if the network is down for an extended time (around 10 minutes), the server gives up and exits. So something needs to restart it. My script checks on the server every 5 minutes, and if it isn't running it starts it again.
 
-Second, Claude Code updates itself automatically (if you used the native installer), but an update doesn't take effect until Claude Code restarts. A server that runs for weeks will happily keep running an old version the whole time, even though new versions have been downloaded.
+Second, Claude Code can update itself in the background (if you used the native installer), but an update doesn't take effect until Claude Code restarts. A server that runs for weeks will happily keep running an old version the whole time. Don't count on the download happening on its own either: `autoUpdates` in `~\.claude.json` may be set to `false`, and a long-running server process doesn't appear to be a reliable trigger for the built-in updater. The failure is a quiet one, because the box just keeps running the old build until something forces the issue, like a newer model that won't run on an old version. So my script stages new versions itself, running `claude update` once an hour and logging what it finds.
 
-I didn't want to restart the server on a fixed schedule, because I travel across time zones and there isn't a time of day when I'm reliably _not_ using it. So my startup script now watches for two conditions: a newer version has been downloaded, and none of the sessions have done anything for an hour. When both are true, it restarts the server, which picks up the new version and brings the existing sessions back.
+I didn't want to restart the server on a fixed schedule, because I travel across time zones and there isn't a time of day when I'm reliably _not_ using it. So my startup script now watches for two conditions: a newer version has been staged, and none of the sessions have done anything for an hour. When both are true, it restarts the server, which picks up the new version and brings the existing sessions back.
 
 There were two surprises while building that.
 
