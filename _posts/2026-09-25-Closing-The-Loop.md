@@ -1,15 +1,15 @@
 ---
 layout: post
 title: Closing the Loop
-postDate: 2026-05-30T08:00:00-05:00
+postDate: 2026-09-25T08:00:00-05:00
 categories: []
 tags: [ai, agents, claude-code]
 published: true
 permalink:
-image: /assets/2026-05-30-Closing-The-Loop/featured-image.png
+image: /assets/2026-09-25-Closing-The-Loop/featured-image.png
 ---
 
-![Closing the Loop](/assets/2026-05-30-Closing-The-Loop/featured-image.png)
+![Closing the Loop](/assets/2026-09-25-Closing-The-Loop/featured-image.png)
 
 The real performance multiplier with a coding agent isn't how fast it can write code. It's whether it can verify its own work.
 
@@ -19,7 +19,7 @@ When an agent implements a feature or bug fix and then immediately runs tests, c
 
 Vague prompts produce vague results. "Make the login page better" isn't a spec. It's a wish. The agent will produce _something_, but neither of you will have a clear way to know if it did the right thing.
 
-What works is investing time upfront — with the agent, with teammates, with stakeholders — to define success. A spec doesn't need to be a formal document. It can be a set of acceptance criteria, a failing test, a user story with clear done conditions, or even a detailed conversation that gets recorded as a markdown file in the repo. What matters is that both the agent and the developer have a shared, explicit definition of what "done" means.
+What works is investing time upfront — with the agent, with teammates, with stakeholders — to define success. A spec doesn't need to be a formal document. It can be a set of acceptance criteria, a failing test, a user story with clear done conditions, or even a detailed conversation that gets recorded as a markdown file in the repo. (Recording plans in the repo is central to [my own Claude Code workflow](https://blog.lhotka.net/2026/04/23/My-Claude-Code-Workflow).) What matters is that both the agent and the developer have a shared, explicit definition of what "done" means.
 
 And "done" should include more than functional behavior. If performance, memory usage, bandwidth, startup time, or cost matter, put those in the spec as explicit targets. If they aren't specified, they won't be enforced.
 
@@ -48,9 +48,9 @@ Three things make the inner loop possible for an agent:
 
 **A programmable interface (CLI preferred).** The agent needs a reliable way to trigger behavior. That can be through a direct CLI, an API, or automated UI flows (for example via Playwright). If the only option is ad hoc manual clicking, the agent is stuck. A direct CLI that exercises the same code paths as the UI — seeding data, triggering workflows, querying state — is still the preferred technique because it is usually faster, less brittle, and easier to iterate against. This is worth building deliberately, not as an afterthought.
 
-**Logs.** Structured, readable logs that tell the agent what actually happened when it ran something. Not just "error occurred" but the full context: what was called, what failed, what state the system was in. If the agent can't read the output of its own tests and understand why something failed, it has to guess — and guessing wastes iterations.
+**Logs.** Structured, readable logs that tell the agent what actually happened when it ran something. Not just "error occurred" but the full context: what was called, what failed, what state the system was in. If the agent can't read the output of its own tests and understand why something failed, it has to guess — and guessing wastes iterations. As I wrote in [Full Circle Development](https://blog.lhotka.net/2026/03/15/Full-Circle-Development), logging has become the agent's debugger.
 
-**OpenTelemetry (OTEL) and observability.** For distributed systems especially, logs from one service aren't enough. OpenTelemetry traces that span service boundaries let the agent follow a request end-to-end and identify _where_ things went wrong, not just _that_ they went wrong. An agent with access to traces can diagnose integration failures that would take a human developer significant time to even reproduce.
+**OpenTelemetry (OTEL) and observability.** For distributed systems especially, logs from one service aren't enough. OpenTelemetry traces that span service boundaries let the agent follow a request end-to-end and identify _where_ things went wrong, not just _that_ they went wrong. An agent with access to traces can diagnose integration failures that would take a human developer significant time to even reproduce. I described the OTel setup I use for RockBot in [Tracking Agent Metrics](https://blog.lhotka.net/2026/03/11/Tracking-Agent-Metrics).
 
 These three things — a programmable execution surface (ideally CLI), logs, and OpenTelemetry — are the difference between an agent that can close its own loop and one that has to stop and ask a human every time it needs to know if something worked.
 
@@ -60,7 +60,7 @@ If you're building on .NET, this is very practical today.
 
 **Use structured logging with Serilog.** Wire Serilog into your host so every operation emits consistent, queryable events. Include correlation IDs, request IDs, and key domain identifiers in log scopes so an agent can pivot from a failing test to the exact execution path. Console output is useful, but shipping logs to a central sink (Seq, ELK, Azure Monitor, etc.) is what makes iterative diagnosis fast.
 
-**Add OpenTelemetry with the Microsoft packages.** Start with a small, explicit NuGet set such as `OpenTelemetry.Extensions.Hosting`, `OpenTelemetry.Instrumentation.AspNetCore`, `OpenTelemetry.Instrumentation.Http`, and `OpenTelemetry.Instrumentation.SqlClient`, plus a Microsoft exporter package like `Azure.Monitor.OpenTelemetry.AspNetCore` when you're in Azure. This gives you traces, metrics, and logs through the same hosting model as the rest of your app. Instrument ASP.NET Core, HttpClient, and data access paths, then export to your OpenTelemetry backend. When a test fails, the agent should be able to inspect a trace and immediately see cross-service latency, retries, and failure boundaries.
+**Add OpenTelemetry.** Start with a small, explicit set of OpenTelemetry .NET NuGet packages such as `OpenTelemetry.Extensions.Hosting`, `OpenTelemetry.Instrumentation.AspNetCore`, `OpenTelemetry.Instrumentation.Http`, and `OpenTelemetry.Instrumentation.SqlClient`, plus a Microsoft exporter package like `Azure.Monitor.OpenTelemetry.AspNetCore` when you're in Azure. This gives you traces, metrics, and logs through the same hosting model as the rest of your app. Instrument ASP.NET Core, HttpClient, and data access paths, then export to your OpenTelemetry backend. When a test fails, the agent should be able to inspect a trace and immediately see cross-service latency, retries, and failure boundaries.
 
 **Run agent-safe workloads in containers.** Put the app and dependencies in Docker (or Kubernetes) so the agent can spin up a disposable environment, run the inner loop, and tear it down without touching shared "real" systems. In Kubernetes, this can be a dev namespace with short-lived pods and strict resource limits. In Docker, it can be a compose stack with ephemeral volumes and test credentials.
 
@@ -87,3 +87,5 @@ Think of it as two nested loops. The inner loop is fast, automated, and owned by
 When the agent does its job, by the time a human reviews the feature, the rough edges are gone. The test cases pass, the logs are clean, the integration works. What's left is the genuinely human judgment: does this actually solve the problem we were trying to solve?
 
 That's the question worth saving human attention for.
+
+_This post was authored with the assistance of AI._
