@@ -84,6 +84,26 @@ With that in place, Patch Tuesday can reboot the machine all it wants, and a min
 
 > ℹ️ If you stop the server and start it again in the same directory within about four hours, it brings back the sessions it was serving. So a reboot or restart is not the end of the world for work that was in progress.
 
+### A Warning About Windows Sign-in
+
+Around the time I set this up, both of my desktop machines got into a bad state. Signing into Windows with my PIN still worked, but after that my _other_ credentials didn't. My Marimer work account, Google, and other web logins were all signed out, and signing into Microsoft 365 failed with TPM errors. Even when I signed in again, things kept logging me out.
+
+What was actually broken was DPAPI, the part of Windows that encrypts per-user secrets like saved tokens and browser cookies. The keys it uses are unlocked by how you sign into Windows. After a PIN sign-in, Windows couldn't open my existing keys, so it quietly created new ones, and nothing encrypted with the old keys could be read anymore. Sign-ins to other services appeared to work, but the tokens couldn't be saved.
+
+I can't prove the scheduled task caused this. My machines sign in with a Microsoft account and have "only allow Windows Hello sign-in" turned on, and on `devbox1` a firmware update had re-provisioned the TPM, which can cause this problem on its own. But on `devbox2` there was no reboot and no TPM change. The S4U task started for the first time, and the next time I signed in, Windows created new DPAPI keys. That is too close together for me to call it a coincidence.
+
+If this happens to you, here's what fixed it for me:
+
+1. Turn off "only allow Windows Hello sign-in" in Settings > Accounts > Sign-in options.
+2. Sign out (really sign out, not just lock the screen) and sign back in with your Microsoft account _password_, not the PIN. The sign-in screen will default to the PIN, so use "Sign-in options" to pick the password. A PIN sign-in does not fix it.
+3. Remove your PIN and add it again. Use Remove, not "I forgot my PIN".
+4. If a work or school account is still broken, remove it and add it again under Settings > Accounts > Access work or school.
+5. Only then sign back into websites and apps.
+
+That last step matters. The first time I fixed this, I later signed in with my PIN again, and the problem came back. That time Edge couldn't read its cookie encryption key, so it replaced it with a new one, and every web login I had was gone for good. The PIN has been fine since I removed it and added it again, but don't sign back into everything until the password sign-in and the PIN reset are done.
+
+This matters even more with this setup, because you'll often be signing in over a remote desktop connection after a reboot to get things like Docker Desktop started. If you run into this, sign in with your password.
+
 ### Some SSH Problems Don't Go Away
 
 The Remote Control server solves the problem of sessions dying, but it doesn't change the fact that Claude is running on a machine where nobody is logged into the desktop. So a couple of the problems from my SSH post still apply, and the solutions are the same.
@@ -151,6 +171,7 @@ Here's where I've ended up:
 3. `claude remote-control` runs a server that lets you start new sessions from your phone or the Claude desktop app, so you don't need to set anything up before you leave.
 4. Start the server when the machine boots, restart it when it exits, and give it a way to pick up updates.
 5. The "nobody is logged in" problems from SSH still apply. Docker Desktop needs a login, and Git and `gh` need credentials that don't prompt.
+6. Watch for Windows sign-in trouble after setting up the S4U task. If your other credentials stop working after a PIN sign-in, sign in with your password and reset the PIN before signing back into anything else.
 
 For me, this is the setup I was looking for when I started down this path with SSH. Claude runs on a well-equipped desktop machine with all my tools, and I can start and work with sessions from anywhere, over just about any network connection.
 
