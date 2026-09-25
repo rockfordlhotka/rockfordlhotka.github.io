@@ -62,6 +62,8 @@ There are three things that make the inner loop possible for an agent.
 
 With these three things in place, the agent can close its own loop. Without them, it has to stop and ask a human every time it needs to know if something worked.
 
+And remember, you don't have to build all of this yourself! If the CLI, logging, and telemetry are part of the spec, the agent will build them along with everything else. In other words, the agent can create the very tools it needs to close its own loop, as long as you ask for them up front.
+
 ## Making This Real in .NET
 
 If you are building on .NET, all of this is very achievable today.
