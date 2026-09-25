@@ -21,6 +21,8 @@ Vague prompts produce vague results. "Make the login page better" isn't a spec. 
 
 What works is investing time upfront — with the agent, with teammates, with stakeholders — to define success. A spec doesn't need to be a formal document. It can be a set of acceptance criteria, a failing test, a user story with clear done conditions, or even a detailed conversation that gets recorded as a markdown file in the repo. (Recording plans in the repo is central to [my own Claude Code workflow](https://blog.lhotka.net/2026/04/23/My-Claude-Code-Workflow).) What matters is that both the agent and the developer have a shared, explicit definition of what "done" means.
 
+You also don't have to write the spec yourself. One of my favorite time savers is to describe what I want in a few sentences and ask the agent to draft the spec. It will typically produce something more complete than I would have typed out on my own, including edge cases and acceptance criteria I might not have bothered to write down. Then I iterate on it: correct what it got wrong, cut what doesn't matter, and add what it missed. Reviewing and refining a draft is _much_ faster than starting from a blank page, and the agent ends up with a spec it helped create and already understands.
+
 And "done" should include more than functional behavior. If performance, memory usage, bandwidth, startup time, or cost matter, put those in the spec as explicit targets. If they aren't specified, they won't be enforced.
 
 That definition is what the inner loop runs against. Without it, you can't close the loop at all.
