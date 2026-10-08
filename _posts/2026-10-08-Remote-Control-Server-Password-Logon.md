@@ -99,8 +99,6 @@ Windows now has a copy of your password. Task Scheduler stores it encrypted, and
 
 And when you change your Microsoft account password, the stored one is wrong. The task will just fail to start, quietly, until you run the script again. So if your server mysteriously stops coming back after a reboot, that's the first thing I'd check.
 
-There's an upside too. With a real logon, the task can use Windows Credential Manager, which an S4U logon can't. In my last post I warned that tools that keep their secrets in the credential store would have trouble. [CHECK: is that true for you now? e.g. does Git Credential Manager or anything else work from Remote Control sessions now?]
-
 ## If You Already Have the Problem
 
 Switching the task to a password logon stops it from happening _again_. It doesn't fix a machine that is already in a bad state. For that, the steps from my last post still apply: sign out, sign back in with your password (not the PIN), remove and re-add the PIN, fix any work or school accounts, and only then sign back into websites and apps.
