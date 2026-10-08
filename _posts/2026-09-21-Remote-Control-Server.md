@@ -11,6 +11,8 @@ image: /assets/2026-09-21-Remote-Control-Server/featured-image.png
 
 ![Claude Code Remote Control Server](/assets/2026-09-21-Remote-Control-Server/featured-image.png)
 
+> ⚠️ Update: I no longer recommend the "Do not store password" (S4U) option for the scheduled task described below. I'm now convinced it caused the Windows sign-in problems I describe later in this post. See [Fixing My Remote Control Server Sign-in Problems](https://blog.lhotka.net/2026/10/08/Remote-Control-Server-Password-Logon) for the fix, which is to run the task with a stored password.
+
 In my [last post](https://blog.lhotka.net/2026/09/18/SSH-Is-Not-A-Desktop) I talked about using SSH to run Claude Code on one of my desktop machines while I'm traveling with my laptop. It works, but it has problems. The biggest one is that disconnecting kills Claude, and on bad airplane or hotel wifi, disconnecting happens a lot.
 
 At the end of that post I said I'd write about Claude Code's Remote Control feature, and then about running a Remote Control _server_. It turns out the first part is pretty short, so this post covers both.
@@ -49,6 +51,8 @@ There are two one-time steps to do first, while you're logged into the desktop:
 2. Run `claude` once in the directory where the server will run (for me that's `S:\src`) and accept the workspace trust prompt. The server can't show you that prompt later, because there is nobody to show it to.
 
 Then create the scheduled task. The important settings are:
+
+> ⚠️ Don't use the S4U option below. It is what I believe caused my sign-in problems. Use a stored password instead, as described in my [follow-up post](https://blog.lhotka.net/2026/10/08/Remote-Control-Server-Password-Logon).
 
 * **Run whether user is logged on or not**, with **Do not store password** checked. Behind the scenes this is an "S4U" logon type. The task runs as you, but in a background logon with no desktop, and without Windows having to store your password.
 * **A startup trigger** with a one minute delay, so the server starts after every reboot.
@@ -89,6 +93,8 @@ With that in place, Patch Tuesday can reboot the machine all it wants, and a min
 Around the time I set this up, both of my desktop machines got into a bad state. Signing into Windows with my PIN still worked, but after that my _other_ credentials didn't. My Marimer work account, Google, and other web logins were all signed out, and signing into Microsoft 365 failed with TPM errors. Even when I signed in again, things kept logging me out.
 
 What was actually broken was DPAPI, the part of Windows that encrypts per-user secrets like saved tokens and browser cookies. The keys it uses are unlocked by how you sign into Windows. After a PIN sign-in, Windows couldn't open my existing keys, so it quietly created new ones, and nothing encrypted with the old keys could be read anymore. Sign-ins to other services appeared to work, but the tokens couldn't be saved.
+
+> Update: I've since become convinced that the S4U scheduled task _was_ the cause. Switching the task to a stored password logon fixed it. The details are in my [follow-up post](https://blog.lhotka.net/2026/10/08/Remote-Control-Server-Password-Logon).
 
 I can't prove the scheduled task caused this. My machines sign in with a Microsoft account and have "only allow Windows Hello sign-in" turned on, and on `devbox1` a firmware update had re-provisioned the TPM, which can cause this problem on its own. But on `devbox2` there was no reboot and no TPM change. The S4U task started for the first time, and the next time I signed in, Windows created new DPAPI keys. That is too close together for me to call it a coincidence.
 
@@ -171,7 +177,7 @@ Here's where I've ended up:
 3. `claude remote-control` runs a server that lets you start new sessions from your phone or the Claude desktop app, so you don't need to set anything up before you leave.
 4. Start the server when the machine boots, restart it when it exits, and give it a way to pick up updates.
 5. The "nobody is logged in" problems from SSH still apply. Docker Desktop needs a login, and Git and `gh` need credentials that don't prompt.
-6. Watch for Windows sign-in trouble after setting up the S4U task. If your other credentials stop working after a PIN sign-in, sign in with your password and reset the PIN before signing back into anything else.
+6. Watch for Windows sign-in trouble after setting up the S4U task. If your other credentials stop working after a PIN sign-in, sign in with your password and reset the PIN before signing back into anything else. (Update: better yet, don't use S4U at all. Run the task with a stored password, as described in my [follow-up post](https://blog.lhotka.net/2026/10/08/Remote-Control-Server-Password-Logon).)
 
 For me, this is the setup I was looking for when I started down this path with SSH. Claude runs on a well-equipped desktop machine with all my tools, and I can start and work with sessions from anywhere, over just about any network connection.
 
