@@ -4,7 +4,7 @@ title: Fixing My Remote Control Server Sign-in Problems
 postDate: 2026-10-08T09:00:00-05:00
 categories: []
 tags: [ai, agents, claude-code]
-published: false
+published: true
 permalink:
 image: /assets/2026-10-08-Remote-Control-Server-Password-Logon/featured-image.png
 ---
