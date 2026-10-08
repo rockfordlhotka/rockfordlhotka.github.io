@@ -13,6 +13,9 @@ permalink: /:year/:month/:day/:title
 plugins:
   - jekyll-sitemap
   - jekyll-seo-tag
+exclude:
+  - .claude
+  - CLAUDE.md
 github:
   is_project_page: false
 google_analytics: www.lhotka.net
