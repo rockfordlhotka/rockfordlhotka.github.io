@@ -169,7 +169,7 @@ I got to see it happen by accident.
 
 And all this cross-model testing, tweaking, and so on is quite similar to the old cross-browser issues we used to face in the early days of the web.
 
-[STORY: optional - a specific cross-browser headache you remember]
+We used to have to deal with browser-specific CSS dialects, and there was a whole cottage industry of cross-browser testing tools and services. All of which have largely faded into the background over time.
 
 Not that it is gone today, but it is _far_ less important than it used to be.
 
