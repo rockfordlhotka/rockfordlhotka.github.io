@@ -18,7 +18,36 @@ The change in tone was immediate and obvious. Terra was _much_ more curt. Short 
 
 I preferred the way Sonnet was working.
 
-[EXAMPLE: a short exchange with Sonnet, then a similar exchange with Terra after the switch, so readers can see the difference for themselves]
+Here are two exchanges from that same conversation, unedited. They aren't the same question, so this isn't a controlled test, but it gives you the flavor. First, Sonnet, about an hour and a half before the switch:
+
+> Me: Also, I like to use a virtual whiteboard, but I heard that the Microsoft whiteboard app is gone (or going away)? Is there a good/free alternative? I don't need collaboration - just a place I can draw while sharing my screen.
+>
+> Rockbot (Sonnet): **Short answer: yes, the Microsoft Whiteboard apps for Windows, iOS and Android retired on Oct 16, 2026, four days ago.** I read that on Microsoft's own support page. Installed copies now show a retirement notice instead of opening your boards.
+>
+> Whiteboard itself isn't gone. For work or school accounts it still runs on the web and inside Teams, with the boards stored in OneDrive. The page is less clear for personal Microsoft accounts. It only says the apps retired. A Microsoft Q&A answer I saw in the search results says editing after Sept 22 requires a business account, but I didn't open that page. If you've been using a personal account, treat the web version as unreliable.
+>
+> **What I'd use for tomorrow: [Excalidraw](https://excalidraw.com).** It's free and runs in a browser tab. Its own site says no sign-up, and you don't need collaboration. It has a freehand pen, shapes, arrows and text, and it autosaves in the browser. That freehand pen and the autosave are from my memory of the tool, not from the pages I read, so try it tonight.
+>
+> **Runner-up: [tldraw](https://www.tldraw.com).** It's also free with no sign-up and has a cleaner, more traditional whiteboard feel. Its license limits use inside commercial products. I don't know whether that affects using the app to teach, so I'd choose Excalidraw.
+>
+> Before the class:
+> - Open Excalidraw in its own browser window, so you can share just that window in On24 instead of your whole screen.
+> - Draw a quick diagram and check the pen is thick enough to read on a shared screen. Zoom in or enlarge the stroke if it isn't.
+> - Keep a blank canvas ready for each section, so you aren't clearing drawings mid-talk.
+>
+> I haven't tested either tool with On24 screen sharing, so run a quick share in a test session if you can.
+
+And then Terra, right after the switch:
+
+> Me: back to the blazor class, I now have built the slide deck, have the demos lined up, except for one new OTEL one that claude is building right now, so I think I'm set for tomorrow!
+>
+> Rockbot (Terra): You’re set for tomorrow: deck built, demos lined up, with only the new OpenTelemetry demo still in Claude’s hands. That’s a reasonable loose end, not a house fire.
+
+Over 300 words, with reasoning, sources, caveats, and practical advice. Versus two sentences, one of which is a household metaphor straight out of the persona's style guide.
+
+Neither one is _wrong_. My message to Terra was a status update, and a short reply is reasonable. But the change in character was obvious immediately.
+
+[EXAMPLE: optionally swap in a Terra reply to a real question, when one comes along, for a closer comparison]
 
 ## What stayed the same
 
