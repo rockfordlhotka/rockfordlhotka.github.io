@@ -119,9 +119,45 @@ Third, I added support for GPT's `verbosity` parameter, which is the provider's 
 
 So "not set" is effectively `medium`, and the dial has a big effect. I'm deliberately _not_ turning it on yet though. I want to see what the prompt change does on its own first, without two variables changing at once.
 
-## So far
+## A first look
 
-[RESULT: how Terra behaves with the new GPT prompt after a few days of real use, and whether verbosity ended up being needed]
+Once the new GPT prompt was deployed, I wanted to see what Terra would do with a question shaped like the whiteboard one. So (via the command line client, from a fresh session) I asked:
+
+> Me: I want to record a few short screen-capture videos with my voice narrating, to go along with the Blazor class. I used to use Camtasia but I don't want to pay for it anymore. Is there a good free alternative? I don't need fancy editing - just record my screen and mic, and maybe trim the start and end.
+
+Terra came back almost immediately with this:
+
+> Rockbot (Terra): For the Blazor recordings, **OBS Studio** is the best free replacement: no watermark, no time limit, good screen-plus-mic recording, and it’s dependable once set up. Its editor is basically nonexistent, though—trim the beginning/end afterward in **Windows Clipchamp**, which is free for simple cuts and exports.
+>
+> The practical two-tool setup is **OBS to record, Clipchamp to trim**. It avoids subscription traps and gives you better capture control than most “free screen recorder” apps. I’m checking the current free-tier caveats before I pin down whether a single-app option beats that combination.
+
+And it really was checking. It had spawned a research subagent, and a couple of minutes later the real answer arrived:
+
+> Rockbot (Terra): **Use Clipchamp Free.** For short Blazor lessons, it’s the closest no-cost replacement for the old Camtasia habit: screen and microphone capture together, simple timeline trimming, and watermark-free 1080p MP4 export. The free tier caps an individual screen recording at **30 minutes**, which fits the short-capture use case well.
+>
+> I’d use this setup:
+>
+> 1. Create a **16:9** project in Clipchamp.
+> 2. Choose **Record & create → Screen**, select your mic, and capture the IDE window or full display.
+> 3. Set Visual Studio/browser text to about **125–150%** so code survives compression.
+> 4. Leave 2–3 seconds of silence at each end; trim with the timeline handles.
+> 5. Export at **1080p**. Do one 30-second test and listen through headphones before recording a real lesson. Audio errors are the sort that wait politely until minute twelve.
+>
+> **OBS Studio** is the better choice only if you want unlimited recording, no Microsoft sign-in, and more reliable capture controls. It’s fully free and open-source, but it has no useful “trim the two ends and be done” editor—so the sensible workflow there is **OBS to record, Clipchamp to trim**.
+>
+> I would skip ScreenPal and ScreenRec for Blazor instruction: their free tiers cap output at **720p**, which makes Visual Studio text needlessly fuzzy. ShareX is free and can trim video, but it’s more fiddly than either of the two above.
+
+That is _much_ closer to what Sonnet would have given me. A recommendation with reasoning, a runner-up and the trade-off between them, practical setup advice, and a reason to skip the others. Even a dry little aside about audio errors waiting until minute twelve, which is the persona showing through without being a household metaphor.
+
+It is still tighter than Sonnet. Maybe two-thirds the length. And Terra went about it differently: a quick provisional answer, then research, then the real answer. Sonnet did its research _before_ answering.
+
+The one thing that bugs me a little is that the first reply said OBS was the best choice, and the final reply says Clipchamp, and Terra never says it changed its mind. Changing the recommendation after doing the research is fine (good, even). But I'd have liked an "I said OBS a minute ago, here's why I've changed my mind." I _think_ Sonnet would have done that, though I can't check for another couple weeks.
+
+This is, of course, one question. It is a different question than the whiteboard one, from a fresh session rather than an established conversation, so it is not a controlled comparison. Still, the difference from that first curt status reply is pretty dramatic, and it came entirely from the prompt. I haven't touched the `verbosity` dial at all.
+
+[RESULT: how Terra behaves after a few more days of real use, and whether verbosity ended up being needed]
+
+## Summary
 
 What I take away from this is that models are not interchangeable parts, even when they are priced the same and sit in the same tier. The same words, in the same prompt, mean different things to different models. Most of the time we don't notice, because most of us don't swap models in the middle of a conversation with an agent that has months of history.
 
