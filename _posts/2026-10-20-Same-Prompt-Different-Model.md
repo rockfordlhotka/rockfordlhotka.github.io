@@ -47,8 +47,6 @@ Over 300 words, with reasoning, sources, caveats, and practical advice. Versus t
 
 Neither one is _wrong_. My message to Terra was a status update, and a short reply is reasonable. But the change in character was obvious immediately.
 
-[EXAMPLE: optionally swap in a Terra reply to a real question, when one comes along, for a closer comparison]
-
 ## What stayed the same
 
 This is the part that makes it an interesting comparison. Nothing changed except the model.
