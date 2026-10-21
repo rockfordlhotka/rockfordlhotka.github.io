@@ -173,6 +173,8 @@ And all this cross-model testing, tweaking, and so on is quite similar to the ol
 
 Not that it is gone today, but it is _far_ less important than it used to be.
 
+Ultimately I think what brought browsers together was a combination of two things. One was market dominance by Chromium and Safari, so just two primary competitors that were forced to converge. The other was some acknowledgement that standards actually _do_ matter, if you want enterprise-level apps to work across browsers and platforms.
+
 I wonder if interacting with LLMs will become more standardized over time, or if picking your LLM model will remain such an important consideration?
 
 _This post was authored with the assistance of AI._
