@@ -14,7 +14,7 @@ I had an accidental experiment happen to me this week, and the result was striki
 
 This week I ran through my Anthropic usage limit, and it won't reset for about 12 days. So, exactly as designed, Rockbot quietly switched from Sonnet to Terra in the middle of an ongoing conversation.
 
-The change in tone was immediate and obvious. Terra was _much_ more curt. Short answers, very little elaboration, almost no conversational back-and-forth. And yet, at the same time, it was following the persona more closely than Sonnet ever did.
+The change in tone was immediate and obvious. Terra was _much_ more curt. And yet, at the same time, it was following the persona's house spirit theme more closely.
 
 I preferred the way Sonnet was working.
 
@@ -121,9 +121,9 @@ So "not set" is effectively `medium`, and the dial has a big effect. I'm deliber
 
 ## A first look
 
-Once the new GPT prompt was deployed, I wanted to see what Terra would do with a question shaped like the whiteboard one. So (via the command line client, from a fresh session) I asked:
+Once the new GPT prompt was deployed, I had Claude Code send Terra a question shaped like the whiteboard one, through Rockbot's command line client and from a fresh session:
 
-> Me: I want to record a few short screen-capture videos with my voice narrating, to go along with the Blazor class. I used to use Camtasia but I don't want to pay for it anymore. Is there a good free alternative? I don't need fancy editing - just record my screen and mic, and maybe trim the start and end.
+> Prompt: I want to record a few short screen-capture videos with my voice narrating, to go along with the Blazor class. I used to use Camtasia but I don't want to pay for it anymore. Is there a good free alternative? I don't need fancy editing - just record my screen and mic, and maybe trim the start and end.
 
 Terra came back almost immediately with this:
 
@@ -147,13 +147,17 @@ And it really was checking. It had spawned a research subagent, and a couple of 
 >
 > I would skip ScreenPal and ScreenRec for Blazor instruction: their free tiers cap output at **720p**, which makes Visual Studio text needlessly fuzzy. ShareX is free and can trim video, but it’s more fiddly than either of the two above.
 
-That is _much_ closer to what Sonnet would have given me. A recommendation with reasoning, a runner-up and the trade-off between them, practical setup advice, and a reason to skip the others. Even a dry little aside about audio errors waiting until minute twelve, which is the persona showing through without being a household metaphor.
+That final answer has the same pieces the Sonnet whiteboard answer had: a recommendation with reasoning, a runner-up and the trade-off between them, practical setup advice, and a reason to skip the others. There is even a dry little aside about audio errors waiting until minute twelve, which is the persona showing through without a household metaphor.
 
-It is still tighter than Sonnet. Maybe two-thirds the length. And Terra went about it differently: a quick provisional answer, then research, then the real answer. Sonnet did its research _before_ answering.
+[OPINION: how close this feels to Sonnet, in your view]
 
-The one thing that bugs me a little is that the first reply said OBS was the best choice, and the final reply says Clipchamp, and Terra never says it changed its mind. Changing the recommendation after doing the research is fine (good, even). But I'd have liked an "I said OBS a minute ago, here's why I've changed my mind." I _think_ Sonnet would have done that, though I can't check for another couple weeks.
+It is still tighter than Sonnet, maybe two-thirds the length. And Terra went about it differently: a quick provisional answer, then research, then the real answer. Sonnet did its research _before_ answering.
 
-This is, of course, one question. It is a different question than the whiteboard one, from a fresh session rather than an established conversation, so it is not a controlled comparison. Still, the difference from that first curt status reply is pretty dramatic, and it came entirely from the prompt. I haven't touched the `verbosity` dial at all.
+One thing stands out. The first reply said OBS was the best choice, the final reply says Clipchamp, and Terra never says it changed its mind. Changing the recommendation after doing the research is reasonable, but the reader of the second message has to notice the switch on their own.
+
+[OPINION: whether that bothers you, and whether you'd expect Sonnet to have flagged the change]
+
+This is, of course, one question. It is a different question than the whiteboard one, from a fresh session rather than an established conversation, so it is not a controlled comparison. Still, it is a big change from that first two-sentence status reply, and the only thing that changed was the prompt. The `verbosity` dial hasn't been touched.
 
 [RESULT: how Terra behaves after a few more days of real use, and whether verbosity ended up being needed]
 
