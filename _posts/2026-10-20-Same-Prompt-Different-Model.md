@@ -165,6 +165,14 @@ This is, of course, one question. It is a different question than the whiteboard
 
 What I take away from this is that models are not interchangeable parts, even when they are priced the same and sit in the same tier. The same words, in the same prompt, mean different things to different models. Most of the time we don't notice, because most of us don't swap models in the middle of a conversation with an agent that has months of history.
 
-I got to see it happen by accident. I don't think it will be the last time I need to tune a prompt per model.
+I got to see it happen by accident.
+
+And all this cross-model testing, tweaking, and so on is quite similar to the old cross-browser issues we used to face in the early days of the web.
+
+[STORY: optional - a specific cross-browser headache you remember]
+
+Not that it is gone today, but it is _far_ less important than it used to be.
+
+I wonder if interacting with LLMs will become more standardized over time, or if picking your LLM model will remain such an important consideration?
 
 _This post was authored with the assistance of AI._
