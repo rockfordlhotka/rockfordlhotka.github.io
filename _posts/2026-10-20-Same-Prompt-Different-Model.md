@@ -151,10 +151,6 @@ That final answer has the same pieces the Sonnet whiteboard answer had: a recomm
 
 It is still tighter than Sonnet, maybe two-thirds the length. And Terra went about it differently: a quick provisional answer, then research, then the real answer. Sonnet did its research _before_ answering.
 
-One thing stands out. The first reply said OBS was the best choice, the final reply says Clipchamp, and Terra never says it changed its mind. Changing the recommendation after doing the research is reasonable, but the reader of the second message has to notice the switch on their own.
-
-[OPINION: whether that bothers you, and whether you'd expect Sonnet to have flagged the change]
-
 This is, of course, one question. It is a different question than the whiteboard one, from a fresh session rather than an established conversation, so it is not a controlled comparison. Still, it is a big change from that first two-sentence status reply, and the only thing that changed was the prompt. The `verbosity` dial hasn't been touched.
 
 [RESULT: how Terra behaves after a few more days of real use, and whether verbosity ended up being needed]
