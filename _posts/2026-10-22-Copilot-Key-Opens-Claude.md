@@ -90,7 +90,7 @@ In Keyboard Manager the final setup is:
 
 That's it. PowerToys does need to be running. If you close it, the key goes back to being plain old Menu or Copilot, depending on the Fn key.
 
-The code and setup docs are in the [claude-utils repo](https://github.com/MarimerLLC/claude-utils), see `docs/claude-focus.md`. The next release will include `claude-focus.exe` for Windows, and until then it is a one-line `go build` from the repo.
+The code and setup docs are in the [claude-utils repo](https://github.com/MarimerLLC/claude-utils), see `docs/claude-focus.md`. `claude-focus.exe` is in the Windows downloads for the [v0.2.0 release](https://github.com/MarimerLLC/claude-utils/releases/tag/v0.2.0), so you don't need to build it yourself.
 
 I have nothing against Copilot and I do use it sometimes. But I use Claude _all the time_, and having this "special" AI key run Claude makes it more useful to me. 
 
