@@ -4,7 +4,7 @@ title: Making the Copilot Key Open Claude
 postDate: 2026-10-22T16:00:00-05:00
 categories: []
 tags: [ai, claude, windows, powertoys]
-published: false
+published: true
 permalink:
 image: /assets/2026-10-22-Copilot-Key-Opens-Claude/featured-image.png
 ---
