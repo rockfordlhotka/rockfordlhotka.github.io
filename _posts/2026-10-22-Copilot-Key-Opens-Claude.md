@@ -31,14 +31,22 @@ Dead end.
 
 So I turned to [PowerToys](https://learn.microsoft.com/windows/powertoys/) and its Keyboard Manager, which can remap keys and shortcuts, and can also map a shortcut to "Run program".
 
-The first thing I learned is that the Copilot key on my keyboard isn't really a _new_ key. It shows up as Menu. And Keyboard Manager won't let a single keypress launch an app, only a shortcut. So my setup is two remaps:
+The first thing I learned is that the Copilot key on my keyboard isn't really a _new_ key. It shows up as Menu.
+
+At least it does the way I have things set up. I keep Fn lock on as a general rule, so the function keys work as normal function keys. With Fn lock on, the Copilot key sends Menu. Press Fn + Copilot and it sends Win + Shift + F23, which is the shortcut Windows actually listens for to launch Copilot. I only figured that out after the rest of this was working, when I noticed that Fn + Copilot really _does_ launch Copilot.
+
+So there are two different key presses to deal with.
+
+Keyboard Manager won't let a single keypress launch an app, only a shortcut. So for the plain Copilot key my setup is two remaps:
 
 1. Remap the Menu key (when pressed alone) to Left Shift + Menu.
 1. Remap the Left Shift + Menu shortcut to run a program.
 
 That way the Copilot key and the plain Menu key both end up as the same shortcut, and that shortcut runs whatever I want.
 
-> Keyboards differ here. Claude tells me that a lot of Copilot keys send Win + Shift + F23 instead. Let the Keyboard Manager editor capture the key rather than typing what you _think_ it sends.
+Fn + Copilot is easier, because Win + Shift + F23 is already a shortcut. It can run the program directly.
+
+> Keyboards differ here, and so does how Fn lock affects things. Let the Keyboard Manager editor capture the key rather than typing what you _think_ it sends.
 
 Now, what program to run?
 
@@ -80,8 +88,13 @@ In Keyboard Manager the final setup is:
 
 1. Remap the Menu key (alone) to Left Shift + Menu.
 1. Remap Left Shift + Menu to Run program, with the full path to `claude-focus.exe` and no arguments.
+1. Remap Win + Shift + F23 to Run program, with the same path.
 
-That's it. PowerToys does need to be running, so if you close it the key goes back to opening Copilot.
+My first try at that last one was to remap Win + Shift + F23 to Left Shift + Menu, figuring it would then flow into the second remap. Nope. Keyboard Manager ignores the keys it sends itself, so one shortcut remap can't trigger another. Worse, it still swallowed the original keys, so now Fn + Copilot did _nothing_ at all. Each shortcut needs its own Run program action.
+
+(A single _key_ remap can feed into a shortcut remap, which is why the Menu key one works. It is only shortcut to shortcut that doesn't chain.)
+
+That's it. PowerToys does need to be running. If you close it, the key goes back to being a Menu key, and Fn + Copilot goes back to opening Copilot.
 
 The code and setup docs are in the [claude-utils repo](https://github.com/MarimerLLC/claude-utils), see `docs/claude-focus.md`. The next release will include `claude-focus.exe` for Windows, and until then it is a one-line `go build` from the repo.
 
