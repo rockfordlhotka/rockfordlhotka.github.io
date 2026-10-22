@@ -41,12 +41,7 @@ I want the key to open Claude whichever way the Fn key is set, so there are two 
 
 Keyboard Manager won't let a single keypress launch an app, only a shortcut. Copilot is the easy one, because Win + Shift + F23 is already a shortcut, so it can run a program directly.
 
-Menu takes two remaps:
-
-1. Remap the Menu key (when pressed alone) to Left Shift + Menu.
-1. Remap the Left Shift + Menu shortcut to run a program.
-
-So both modes of the key end up as shortcuts, and each of those shortcuts runs whatever I want.
+Menu is a single key, so I just remap it (when pressed alone) to Win + Shift + F23. In other words, I turn Menu into Copilot. Now both modes of the key end up as the same shortcut, and that one shortcut runs whatever I want.
 
 > Keyboards differ here, and so does how Fn lock affects things. Let the Keyboard Manager editor capture the key rather than typing what you _think_ it sends.
 
@@ -88,13 +83,10 @@ A couple details that might be interesting:
 
 In Keyboard Manager the final setup is:
 
-1. Remap the Menu key (alone) to Left Shift + Menu.
-1. Remap Left Shift + Menu to Run program, with the full path to `claude-focus.exe` and no arguments.
-1. Remap Win + Shift + F23 to Run program, with the same path.
+1. Remap the Menu key (alone) to Win + Shift + F23.
+1. Remap Win + Shift + F23 to Run program, with the full path to `claude-focus.exe` and no arguments.
 
-My first try at that last one was to remap Win + Shift + F23 to Left Shift + Menu, figuring it would then flow into the second remap. Nope. Keyboard Manager ignores the keys it sends itself, so one shortcut remap can't trigger another. Worse, it still swallowed the original keys, so now the key in Copilot mode did _nothing_ at all. Each shortcut needs its own Run program action.
-
-(A single _key_ remap can feed into a shortcut remap, which is why the Menu key one works. It is only shortcut to shortcut that doesn't chain.)
+> I originally routed everything through a Left Shift + Menu shortcut instead, and remapped Copilot to _that_. Nope. Keyboard Manager ignores the keys it sends itself, so one shortcut remap can't trigger another. Worse, it still swallowed the Copilot keys, so in Copilot mode the key did _nothing_ at all. A single _key_ remap feeding a shortcut remap is fine though, which is why turning Menu into Copilot works.
 
 That's it. PowerToys does need to be running. If you close it, the key goes back to being plain old Menu or Copilot, depending on the Fn key.
 
