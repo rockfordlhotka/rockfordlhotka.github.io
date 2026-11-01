@@ -6,7 +6,10 @@ categories: []
 tags: [ai, agents, rockbot, mcp]
 published: true
 permalink:
+image: /assets/2026-11-01-RockBot-Location-Awareness/featured-image.png
 ---
+
+![RockBot Location Awareness](/assets/2026-11-01-RockBot-Location-Awareness/featured-image.png)
 
 A personal assistant that doesn't know where you are is missing something basic. Ask a human assistant "what time is my next meeting?" while you're traveling, and they'll answer in your local time without being told. Ask "where was I when that call came in yesterday?" and they can probably tell you. Until now, [RockBot](https://rockbot.dev) couldn't do either of those things.
 
@@ -66,3 +69,5 @@ The full setup guide, including phone settings, Recorder deployment, RockBot con
 **[User location on rockbot.dev](https://rockbot.dev/user-location)**
 
 If you're new to RockBot, start at [rockbot.dev](https://rockbot.dev). The source is on [GitHub](https://github.com/MarimerLLC/rockbot).
+
+_This post was authored with the assistance of AI._
