@@ -47,6 +47,8 @@ UTCP's own comparison frames it as "direct" versus MCP's "middleman" model. That
 - **A server-side place for secrets.** With UTCP, the client holds the credentials, and the manual decides which URL they get sent to. A manual is a list of instructions for your agent's secrets. If you load one you don't fully trust, it can send your API key to the wrong place, or, with a CLI call template, run commands on your machine. The UTCP RFC acknowledges this and tells you to load only trusted manuals. That's reasonable advice, and it's also the problem.
 - **The ecosystem.** MCP is everywhere. UTCP manuals are rare.
 
+**The middleman has value.** UTCP treats the server in the middle as overhead to get rid of, but we've learned this lesson before. Back when client/server apps talked straight to the database, every client machine needed a connection string, and often the credentials to go with it. Moving to n-tier, with an application server between the clients and the database, meant the keys to the database lived only on the app server. No client ever saw them, and the whole system was more secure as a result. An MCP server (or an aggregator in front of several) plays the same role for agents. The agent holds a credential for the MCP server, not the keys to every API behind it. A central server is also the natural place for logging and tracing. Every tool call passes through one spot, so you can record who called what, with which arguments and what result, and connect it all with distributed tracing. When the agent calls tools directly, that record is scattered across every client and every API, if it exists at all.
+
 **MCP has also been closing the gap.** A big part of UTCP's original pitch was that MCP is heavy and stateful. The [2026-07-28 MCP specification](https://blog.modelcontextprotocol.io/posts/2026-07-28-release-candidate/) made the protocol stateless: no sessions, no initialization handshake, each request stands on its own, and any request can land on any server instance behind a plain load balancer. That knocks out a lot of the operational argument for skipping MCP.
 
 ## RockBot
@@ -72,7 +74,7 @@ UTCP's default tool search is a simple keyword match on tags and descriptions. G
 
 The aggregator is different. Its job is to sit in front of many backend servers and present them as one MCP server, with tool search, typed wrapper tools and skills. A UTCP or OpenAPI backend would fit there as a gateway: read the manual (or OpenAPI document), present those tools as MCP tools, and make the calls from the server side.
 
-That flips UTCP's model around. The credentials stay on the server, where I can control them, and every MCP client gets the tools without knowing UTCP exists. It's the opposite of UTCP's "no middleman" philosophy, and I'm fine with that.
+That flips UTCP's model around, and gets back the value of a server in the middle. The credentials stay on the server, where I can control them, every call is logged and traced in one place, and every MCP client gets the tools without knowing UTCP exists. It's the opposite of UTCP's "no middleman" philosophy, and I'm fine with that.
 
 If I do this, it'll be **OpenAPI import first**, because OpenAPI documents are everywhere and UTCP manuals aren't. I'd also accept only HTTP-style call templates (no CLI), and only from servers an operator registers. I'll do it when I have a specific REST API I want to expose, and not before.
 
