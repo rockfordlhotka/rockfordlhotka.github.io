@@ -4,7 +4,7 @@ title: Does RockBot Need UTCP?
 postDate: 2026-11-08T12:00:00-06:00
 categories: []
 tags: [ai, agents, rockbot, mcp, utcp]
-published: false
+published: true
 permalink:
 image: /assets/2026-11-08-Does-RockBot-Need-UTCP/featured-image.png
 ---
