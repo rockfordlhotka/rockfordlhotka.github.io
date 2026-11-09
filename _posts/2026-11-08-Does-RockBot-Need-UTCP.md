@@ -13,7 +13,7 @@ Every few months a new protocol shows up that promises to fix the problems with 
 
 I build and run several things that live in this space: [RockBot](https://rockbot.dev) (my agent framework and agent), an MCP aggregator, and [AgentRegistry](https://github.com/MarimerLLC/agentregistry) (a registry where agents and tool servers can find each other). So I took a serious look at whether UTCP belongs in any of them.
 
-The short answer: not right now. But working through it gave me one idea worth stealing.
+The short answer: not right now. But working through it did inspire an improvement to RockBot.
 
 ## What UTCP is
 
@@ -88,7 +88,7 @@ The cautions still apply. Discovery in the registry is public. A UTCP manual is 
 
 And the honest question is: who would use it? Today, nobody in my world publishes or consumes UTCP manuals. So: a good fit, but not yet.
 
-## The idea worth stealing: code mode
+## Inspired by code mode
 
 The most interesting thing I found wasn't the protocol. It was [code mode](https://github.com/universal-tool-calling-protocol/code-mode). Instead of the model making one tool call at a time, with a full round trip through the LLM for each, the model writes a short script that calls tools as ordinary functions. The script runs in a sandbox, and only the final result goes back into the model's context.
 
@@ -109,7 +109,7 @@ None of that works on arbitrary scripts. (UTCP's code mode sandboxes code with N
 
 **Where code mode is better: control flow that depends on the data.** A wisp is a straight list of steps. It can pass results from one step to the next and skip ahead on failure, but it can't loop or make decisions. Take "search my email, then fetch each of the N messages that came back". In code mode that's a `for` loop. In a wisp, today, it needs a step handled by the small model, so tokens are back on the meter for purely mechanical work.
 
-So rather than adopting code mode, I've opened an issue to add a [`for_each` step to wisps](https://github.com/MarimerLLC/rockbot/issues/779). A direct step names a list from a previous step's result, and the harness runs it once per item, with limits on item count and concurrency and per-item failure handling. A simple `when` condition may follow. Both stay declarative, so wisps keep everything that comes from being data, and pick up most of what makes code mode appealing.
+Code mode made that gap obvious, and it inspired a fix that fits how wisps already work. Rather than adopting code mode itself, I've opened an issue to add a [`for_each` step to wisps](https://github.com/MarimerLLC/rockbot/issues/779). A direct step names a list from a previous step's result, and the harness runs it once per item, with limits on item count and concurrency and per-item failure handling. A simple `when` condition may follow. Both stay declarative, so wisps keep everything that comes from being data, and pick up most of what makes code mode appealing.
 
 ## Where I landed
 
