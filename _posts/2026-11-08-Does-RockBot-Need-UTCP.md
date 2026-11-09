@@ -6,8 +6,10 @@ categories: []
 tags: [ai, agents, rockbot, mcp, utcp]
 published: false
 permalink:
-image:
+image: /assets/2026-11-08-Does-RockBot-Need-UTCP/featured-image.png
 ---
+
+![Does RockBot Need UTCP?](/assets/2026-11-08-Does-RockBot-Need-UTCP/featured-image.png)
 
 One of the things I enjoy most about the agent tooling space right now is how many people are trying new ideas. The [Model Context Protocol](https://modelcontextprotocol.io) (MCP) has become the default way to connect agents to tools, but it's far from the only idea out there. One project that has caught my attention is the [Universal Tool Calling Protocol](https://www.utcp.io) (UTCP).
 
