@@ -1,0 +1,194 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>The RockBot Ecosystem - featured image</title>
+<!-- Source for featured-image.png. Render at 1024x572 with headless Edge:
+     msedge --headless=new --hide-scrollbars --force-device-scale-factor=1
+            --window-size=1024,572 --screenshot=featured-image.png featured-image.html -->
+<style>
+  :root {
+    --bg: #0d1626;
+    --card: #131e2f;
+    --card-border: #2a3a52;
+    --inset: #0b1320;
+    --text: #e8edf5;
+    --muted: #93a3b8;
+    --orange: #ef7348;
+    --green: #5fd38a;
+    --blue: #6aa8ff;
+    --cyan: #4bcfe1;
+    --amber: #f5a94b;
+    --mono: "Cascadia Code", "Cascadia Mono", Consolas, monospace;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 1024px; height: 572px; overflow: hidden; }
+  body {
+    font-family: "Segoe UI Variable Display", "Segoe UI", sans-serif;
+    color: var(--text);
+    background:
+      radial-gradient(ellipse 380px 300px at 16% 62%, rgba(95, 211, 138, 0.09), transparent 70%),
+      radial-gradient(ellipse 600px 360px at 72% 60%, rgba(75, 207, 225, 0.07), transparent 70%),
+      radial-gradient(ellipse 500px 320px at 95% 95%, rgba(239, 115, 72, 0.06), transparent 70%),
+      linear-gradient(rgba(255,255,255,0.035) 1px, transparent 1px) 0 0 / 32px 32px,
+      linear-gradient(90deg, rgba(255,255,255,0.035) 1px, transparent 1px) 0 0 / 32px 32px,
+      var(--bg);
+    position: relative;
+  }
+  h1 {
+    position: absolute; left: 52px; top: 30px;
+    font-size: 56px; font-weight: 800; letter-spacing: -1px;
+  }
+  h1 .accent { color: var(--orange); }
+  .subtitle {
+    position: absolute; left: 54px; top: 108px;
+    font-size: 20px; color: #b7c3d4;
+  }
+
+  .row {
+    position: absolute; left: 40px; right: 40px; top: 160px;
+    height: 324px;
+    display: flex; align-items: stretch; justify-content: space-between;
+  }
+  .card {
+    display: flex; flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 14px 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.35);
+  }
+  .card h2 { font-size: 16px; font-weight: 700; margin-bottom: 12px; display: flex; justify-content: space-between; align-items: baseline; }
+  .card h2 small { font-size: 12px; font-weight: 600; color: var(--green); }
+
+  .tag {
+    margin-top: auto; font-family: var(--mono); font-size: 12.5px;
+    border: 1px solid rgba(95,211,138,0.45); background: rgba(95,211,138,0.10);
+    color: var(--green); border-radius: 8px; padding: 6px 10px; white-space: nowrap;
+  }
+
+  /* RockBot */
+  .rockbot {
+    width: 214px;
+    border-color: rgba(95,211,138,0.6);
+    box-shadow: 0 0 0 1px rgba(95,211,138,0.15), 0 0 40px rgba(95,211,138,0.16), 0 10px 30px rgba(0,0,0,0.35);
+  }
+  .bubble {
+    border-radius: 10px; padding: 8px 10px; font-size: 13px; line-height: 1.35; margin-bottom: 10px;
+  }
+  .bubble.me { background: #1e3150; border: 1px solid #2c4670; margin-left: 22px; }
+  .bubble.bot { background: var(--inset); border: 1px solid #22314a; margin-right: 10px; }
+  .bubble .hl { color: var(--green); font-weight: 600; }
+
+  /* MCP link */
+  .arrow-link {
+    flex: 0 0 34px; height: 2px; position: relative; align-self: center;
+    background: linear-gradient(90deg, var(--green), var(--cyan));
+  }
+  .arrow-link::after {
+    content: ""; position: absolute; right: -2px; top: -5px;
+    border-left: 9px solid var(--cyan); border-top: 6px solid transparent; border-bottom: 6px solid transparent;
+  }
+  .arrow-label {
+    position: absolute; left: 50%; top: -22px; transform: translateX(-50%); white-space: nowrap;
+    font-family: var(--mono); font-size: 11px; color: var(--muted); letter-spacing: 1px;
+  }
+
+  /* server groups */
+  .grid {
+    flex: 1; margin-left: 8px;
+    display: grid; grid-template-columns: repeat(3, 1fr); grid-template-rows: 1fr 1fr; gap: 12px;
+  }
+  .group { padding: 11px 14px 10px; }
+  .group .hd {
+    display: flex; justify-content: space-between; align-items: center;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 1.5px; color: var(--muted);
+    margin-bottom: 9px;
+  }
+  .group .hd svg { width: 15px; height: 15px; opacity: 0.85; }
+  .item { margin-bottom: 7px; }
+  .item:last-child { margin-bottom: 0; }
+  .item .n { font-size: 15px; font-weight: 700; display: flex; align-items: center; gap: 7px; line-height: 1.2; }
+  .item .d { font-size: 12.5px; color: var(--muted); line-height: 1.3; }
+  .new {
+    font-family: var(--mono); font-size: 9.5px; font-weight: 600; letter-spacing: 1px;
+    color: var(--green); border: 1px solid rgba(95,211,138,0.5); background: rgba(95,211,138,0.10);
+    border-radius: 999px; padding: 0 6px;
+  }
+
+  .group.cal { border-color: rgba(75,207,225,0.55); box-shadow: 0 0 0 1px rgba(75,207,225,0.10), 0 0 30px rgba(75,207,225,0.12), 0 10px 30px rgba(0,0,0,0.35); }
+  .group.cal .hd { color: var(--cyan); }
+  .group.a2a { border-style: dashed; border-color: #3a4d6a; background: rgba(19,30,47,0.75); }
+  .group.a2a .hd { color: var(--blue); }
+
+  .caption {
+    position: absolute; right: 48px; bottom: 26px;
+    font-family: var(--mono); font-size: 13px; letter-spacing: 4px; color: #8fa3c4;
+  }
+  .caption { display: flex; align-items: center; gap: 12px; }
+  .caption .k { width: 17px; height: 17px; }
+</style>
+</head>
+<body>
+  <h1>The <span class="accent">RockBot</span> Ecosystem</h1>
+  <div class="subtitle">One agent, a dozen MCP servers, and none of their secrets in the agent</div>
+
+  <!-- small key icon reused in each group header -->
+  <svg width="0" height="0" style="position:absolute">
+    <symbol id="key" viewBox="0 0 16 16">
+      <circle cx="5" cy="8" r="3.2" fill="none" stroke="#f5a94b" stroke-width="1.6"/>
+      <path d="M8.2 8H15M12.4 8v2.6M14.6 8v1.8" fill="none" stroke="#f5a94b" stroke-width="1.6" stroke-linecap="round"/>
+    </symbol>
+  </svg>
+
+  <div class="row">
+    <div class="card rockbot">
+      <h2>RockBot <small>● running</small></h2>
+      <div class="bubble me">Set up a meeting with the team next week.</div>
+      <div class="bubble bot">I found <span class="hl">6 open times</span> across your calendars and sent a Scheduler poll. I'll book it when the votes are in.</div>
+      <div class="tag">LLM keys only</div>
+    </div>
+
+    <div class="arrow-link"><span class="arrow-label">MCP</span></div>
+
+    <div class="grid">
+      <div class="card group cal">
+        <div class="hd">EMAIL · CALENDAR <svg><use href="#key"/></svg></div>
+        <div class="item"><div class="n">Adjutant</div><div class="d">every mailbox &amp; calendar</div></div>
+        <div class="item"><div class="n">Scheduler <span class="new">NEW</span></div><div class="d">meeting polls, no shared calendars</div></div>
+      </div>
+
+      <div class="card group">
+        <div class="hd">FILES · CODE <svg><use href="#key"/></svg></div>
+        <div class="item"><div class="n">OneDrive ×2</div><div class="d">work · personal</div></div>
+        <div class="item"><div class="n">GitHub</div><div class="d">repos · issues · PRs</div></div>
+      </div>
+
+      <div class="card group">
+        <div class="hd">EVERYDAY <svg><use href="#key"/></svg></div>
+        <div class="item"><div class="n">Todo</div><div class="d">due dates · recurrence</div></div>
+        <div class="item"><div class="n">OwnTracks</div><div class="d">where I am</div></div>
+      </div>
+
+      <div class="card group">
+        <div class="hd">HELPER AGENTS <svg><use href="#key"/></svg></div>
+        <div class="item"><div class="n">Research agent</div><div class="d">long-running tasks</div></div>
+        <div class="item"><div class="n">Advisor council <span class="new">NEW</span></div><div class="d">asks before it advises</div></div>
+      </div>
+
+      <div class="card group">
+        <div class="hd">ITSELF <svg><use href="#key"/></svg></div>
+        <div class="item"><div class="n">OpenRouter · Foundry</div><div class="d">models · credit · usage</div></div>
+        <div class="item"><div class="n">Introspection</div><div class="d">costs · memory health</div></div>
+      </div>
+
+      <div class="card group a2a">
+        <div class="hd">OVER A2A <svg><use href="#key"/></svg></div>
+        <div class="item"><div class="n">SocialAgent</div><div class="d">Mastodon · Bluesky</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="caption"><svg class="k"><use href="#key"/></svg> EACH SERVER HOLDS ITS OWN SECRETS</div>
+</body>
+</html>
